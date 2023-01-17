@@ -35,13 +35,14 @@ body{
   padding: 20px;
 }
 
-.login-page .login-form{
+.login-page .login-form,
+.login-page .signup-form{
   min-width: 300px;
   height: auto;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 1px 1px 3px 3px #ddd;
-  padding: 10px;
+  padding: 15px;
 }
 
 .login-page .login-form form{
@@ -52,8 +53,8 @@ body{
 .login-page form input{
   display: block;
   width: 100%;
-  padding: 10px;
-  margin: 20px 0;
+  padding: 15px;
+  margin-bottom: 20px;
   border: 1px solid #aaa;
   border-radius: 4px;
   caret-color: #1b74e4;
@@ -69,11 +70,10 @@ body{
   font-weight: 700;
   color: white;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   outline: none;
   border: none;
   border-radius: 5px;
-  font-size: 1.1rem;
 }
 
 .login-page button.login-btn{
@@ -92,4 +92,23 @@ body{
 .login-page button.signup-btn:hover{
   background-color: #24b806;
   margin-top: 20px;
+}
+
+.login-page .login-msg{
+  font-size: .8rem;
+  color: #aaa;
+}
+
+.login-page .login-msg button{
+  font-size: .8rem;
+  color: #aaa;
+  background-color: white;
+  padding: 0;
+  margin-top: 5px;
+  width: auto;
+  display: inline;
+  border: none;
+}
+.login-page .login-msg button:hover{
+  color: #777;
 }

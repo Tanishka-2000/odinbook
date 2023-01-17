@@ -15,36 +15,23 @@ export default function Login(){
       </div>
       { login ? 
       <div className='login-form'>
-        <form>
-          
-          <input id='username' type='text' placeholder='Email address'/>
-    
-          <input id='password' type={showPassword ? 'text' : 'password'} placeholder='password'/>
-          {/* <span class="material-symbols-outlined">visibility</span> */}
-       
+        <form>        
+          <input id='username' type='text' placeholder='Email address' aria-label='Email address'/>   
+          <input id='password' type='password' placeholder='password' aria-label='password'/>
+          {/* <span class="material-symbols-outlined">visibility</span> */}     
           <button type='submit' className='login-btn'>Log in</button>
-
         </form>
         <button className='signup-btn' onClick={() => setLogin(false)}>Create New Account</button>
       </div>
         :
       <div className='signup-form'>
-        <form>
-          <div className='form-group'>
-            <label htmlFor='name'>Name</label>
-            <input id='name' type='text'/>
-          </div>
-
-          <div className='form-group'>
-            <label htmlFor='username'>Email</label>
-            <input id='username' type='text'/>
-          </div>
-
-          <div className='form-group'>
-            <label htmlFor='password'>Password  <button type='button' onClick={() => setShowPassword(prev => !prev)}>show</button> </label>
-            <input id='password' type={showPassword ? 'text' : 'password'} />
-          </div>
-
+        <form>        
+          <input id='name' type='text' placeholder='Name' aria-label='Name'/>
+          <input id='username' type='text' placeholder='Email address' aria-label='Eamil address'/>
+          {/* <button type='button' onClick={() => setShowPassword(prev => !prev)}>show</button> */}
+          <input id='password' type={showPassword ? 'text' : 'password'} placeholder='Password' aria-label='password'/>
+          <button type='submit' className='signup-btn'>sign up</button>
+          <p className='login-msg'>already have an account? <button type='button' onClick={() => setLogin(true)}>log in</button></p>
         </form> 
       </div>
       }
