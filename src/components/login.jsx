@@ -6,7 +6,9 @@ export default function Login(){
   // const [username, setusername] = useState('');
   // const [password, setPassword] = useState('');
 
-   
+  <span class="material-symbols-outlined">
+  visibility_off
+  </span>
   return(
     <div className='login-page'>
       <div className='hero-container'>
@@ -17,8 +19,8 @@ export default function Login(){
       <div className='login-form'>
         <form>        
           <input id='username' type='text' placeholder='Email address' aria-label='Email address'/>   
-          <input id='password' type='password' placeholder='password' aria-label='password'/>
-          {/* <span class="material-symbols-outlined">visibility</span> */}     
+          <input id='password' type={showPassword ? 'text' : 'password'} placeholder='password' aria-label='password'/>
+          <span className='material-symbols-outlined showPassword' onClick={() => setShowPassword(prev => !prev)}>{showPassword ? 'visibility_off' : 'visibility'}</span>     
           <button type='submit' className='login-btn'>Log in</button>
         </form>
         <button className='signup-btn' onClick={() => setLogin(false)}>Create New Account</button>

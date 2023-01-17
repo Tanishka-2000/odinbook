@@ -43,6 +43,7 @@ body{
   border-radius: 10px;
   box-shadow: 1px 1px 3px 3px #ddd;
   padding: 15px;
+  position: relative;
 }
 
 .login-page .login-form form{
@@ -64,6 +65,13 @@ body{
 .login-page form input:focus{
   border: 1px solid #1b74e4;
   box-shadow: 0px 0px 4px 0px #1b74e4;
+}
+
+.showPassword{
+  position: absolute;
+  top: 95px;
+  right: 20px;
+  color: #999;
 }
 
 .login-page button{
