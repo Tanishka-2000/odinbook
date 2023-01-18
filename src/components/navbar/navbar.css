@@ -3,6 +3,9 @@ nav{
   grid-template-columns: 3fr 3fr 3fr;
   padding: 8px 20px;
   background-color: var(--secondary-background-color);
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 nav li{

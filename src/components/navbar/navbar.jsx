@@ -18,12 +18,15 @@ export default function Navbar(){
         <li title='home' className='active'><a href='#'><span className='material-symbols-outlined icon'>home</span></a></li>
         <li title='friends'><a href='#'><span className='material-symbols-outlined icon'>group</span></a></li>
         <li title='write post'><a href='#'><span className='material-symbols-outlined icon'>edit_square</span></a></li>
+        {/* add link on mobile view */}
         <li title='notifications mobile-view'><a><span className='material-symbols-outlined round-icon'>notifications</span></a></li>
       </div>
 
       <div className='last'>
+      {/* mobile view */}
         <li className='search mobile-view'><span className='material-symbols-outlined search-icon'>search</span><input type='text' placeholder='Search odinbook' /></li>
         <li className='find-friends' title='search friends'><a href='#'>Find Friends</a></li>
+      {/* desktop view  */}
         <li title='profile' className='desktop-view'><a href='#'><span className='material-symbols-outlined round-icon'>person</span></a></li>
         <li title='settings' className='desktop-view'><a href='#'><span className='material-symbols-outlined round-icon'>apps</span></a></li>
         <li title='notifications' className='desktop-view'><a><span className='material-symbols-outlined round-icon'>notifications</span></a></li>

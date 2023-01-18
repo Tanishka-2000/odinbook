@@ -2,4 +2,48 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 65px;
 }
+
+.home .write{
+  display: flex;
+  width: 600px;
+  background-color: var(--secondary-background-color);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.home .write .material-symbols-outlined{
+  width: 40px;
+  height: 40px;
+  font-size: 1.8rem;
+  border-radius: 50%;
+  background-color: var(--primary-background-color);
+  display: grid;
+  place-content: center;
+  margin-right: 10px;
+}
+
+.home .write .bold{
+  font-weight: 500px;
+  font-size: 1.2rem;
+}
+
+@media (width < 1024px) {
+  .home {
+    margin-top: 130px;
+  }
+
+  .home .write{
+    width: 95%;
+  }
+}
+
+@media (width < 360px){
+  .home{
+    margin-top: 145px;
+  }
+}
+
+
+
