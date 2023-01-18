@@ -1,0 +1,142 @@
+nav{
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+  padding: 8px 20px;
+  background-color: var(--secondary-background-color);
+}
+
+nav li{
+  list-style-type: none;
+}
+
+nav a{
+  color: var(--color);
+  text-decoration: none;
+}
+
+nav :is(.first, .middle, .last){
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+nav .last .find-friends{
+  background-color: var(--primary-background-color);
+  border-radius: 30px;
+  padding: 10px 15px;
+  font-weight: 400;
+  font-size: .8rem;
+}
+
+nav .search{
+  display: flex;
+  gap: 5px;
+  position: relative;
+}
+
+nav .search-icon{
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  position: absolute;
+  top: 5px;
+  left: 7px;
+}
+
+nav .search input{
+  width: 100%;
+  padding: 8px 0;
+  padding-left: 30px;
+  border-radius: 30px;
+  background-color: var(--primary-background-color);
+  outline: none;
+  border: none;
+  color: var(--color);
+  caret-color: var(--color);
+}
+
+nav .logo .symbol{
+  display: inline-block;
+  text-align: center;
+  font-size: 1.8rem;
+  width: 40px;
+  height: 40px;
+  font-weight: 900;
+  color: var(--color);
+  background-color: var(--primary-background-color);
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+nav .logo-name{
+  color: var(--color);
+  font-weight: 700;
+  /* display: none; */
+  font-size: 1.3rem;
+  margin-right: auto  ;
+}
+
+nav .round-icon{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-weight: 700;
+  display: grid;
+  place-content: center;
+  background-color: var(--primary-background-color);;
+  color: var(--color);;
+}
+nav .middle li{
+  text-align: center;
+  flex-grow: 1;
+  height: 100%;
+  display: grid;
+  place-content: center;
+}
+
+nav .middle li:hover
+{
+  background-color: var(--primary-background-color);
+}
+
+nav .middle li.active{
+  border-bottom: 3px solid var(--color);
+}
+
+nav .icon{
+  font-size: 1.8rem;
+  color: var(--color);
+}
+
+nav .last{
+  justify-content: flex-end;
+}
+
+#root.light nav .last :is(.round-icon, .find-friends):hover{
+  background-color: #e0e2e5;
+}
+
+#root.dark nav .last :is(.round-icon, .find-friends):hover{
+  background-color: #333;
+}
+
+.mobile-view{
+  display: none;
+}
+
+@media (width < 1024px) {
+  nav{
+    grid-template-columns: 1fr;
+  }
+ nav .mobile-view{
+    display: block;
+  }
+  nav .desktop-view{
+    display: none;
+  }
+  nav .last .search{
+    flex-grow: 3;
+  }
+  nav .last .find-friends{
+    flex-grow: 1;
+  }
+}

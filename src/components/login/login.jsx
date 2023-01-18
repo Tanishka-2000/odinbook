@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useState } from "react";
+import FacebookLogin from 'react-facebook-login';
+
+import './login.css';
 
 export default function Login(){
   const [showPassword, setShowPassword] = useState(false);
   const [login, setLogin] = useState(true);
-  // const [username, setusername] = useState('');
-  // const [password, setPassword] = useState('');
 
   <span class="material-symbols-outlined">
   visibility_off
@@ -24,6 +25,7 @@ export default function Login(){
           <button type='submit' className='login-btn'>Log in</button>
         </form>
         <button className='signup-btn' onClick={() => setLogin(false)}>Create New Account</button>
+        
       </div>
         :
       <div className='signup-form'>
@@ -40,5 +42,11 @@ export default function Login(){
     </div>
   )
 }
-{/* value={username} onChange={e => setusername(e.target.value)}*/}
-{/*value={password} onChange={e => setPassword(e.target.value)} */}
+
+// const responseFacebook = response => console.log(response);
+
+{/* <FacebookLogin
+        appId="1199609287615763"
+        autoLoad={true}
+        fields="name,email,picture"    
+        callback={responseFacebook} />  */}

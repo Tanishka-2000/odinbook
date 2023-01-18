@@ -1,0 +1,88 @@
+.post{
+  min-width: 600px;
+  width: 300px;
+  background-color: var(--secondary-background-color);
+  border-radius: 10px;
+  margin: 20px 0;
+  color: var(--color);
+}
+
+@media (width < 650px){
+  .post{
+    min-width: 90%;
+  }
+}
+
+.bold{
+  font-weight: 700;
+  margin: 3px;
+}
+
+.light{
+  font-weight: 300;
+}
+
+.regular{
+  font-weight: 400;
+  font-size: .8rem;
+}
+
+.small{
+  font-size: .7rem;
+}
+
+.head{
+  display: flex;
+  padding: 10px;
+}
+
+.head .material-symbols-outlined{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-background-color);
+  display: grid;
+  place-content: center;
+  margin-right: 10px;
+}
+
+.info{
+  padding: 10px;
+}
+
+.post img{
+  width: 100%;
+}
+
+.post .data{
+  display: flex;
+  justify-content: space-between;
+  font-size: .8rem;
+  font-weight: 500;
+  padding: 10px;
+  color: var(--secondary-color);
+}
+
+.post .btn-group{
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.post .btn-group button{
+  flex-grow: 1 ;
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  outline: none;
+  font-size: .8rem;
+  background-color: var(--secondary-background-color);
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+  color: var(--secondary-color)
+}
+
+.post .btn-group button:hover{
+  background-color: var(--primary-background-color);
+}

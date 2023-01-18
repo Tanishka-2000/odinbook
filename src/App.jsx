@@ -1,4 +1,3 @@
-import FacebookLogin from 'react-facebook-login';
 
 
 function App() {
