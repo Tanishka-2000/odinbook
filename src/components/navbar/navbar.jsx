@@ -20,7 +20,7 @@ export default function Navbar(){
         <li title='friends'><a href='#'><span className='material-symbols-outlined icon'>group</span></a></li>
         <li title='write post'><a href='#'><span className='material-symbols-outlined icon'>edit_square</span></a></li>
         {/* add link on mobile view */}
-        <li title='notifications mobile-view'><a><span className='material-symbols-outlined round-icon'>notifications</span></a></li>
+        <li title='notifications' className='mobile-view'><a><span className='material-symbols-outlined round-icon'>notifications</span></a></li>
       </div>
 
       <div className='last'>

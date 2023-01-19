@@ -36,7 +36,7 @@
   padding: 10px;
 }
 
-.head .material-symbols-outlined{
+.post .account-circle{
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -85,4 +85,58 @@
 
 .post .btn-group button:hover{
   background-color: var(--primary-background-color);
+}
+
+/* comments section */
+
+.comments{
+  border-top: 1px solid #ddd;
+  padding: 10px;
+}
+
+.write-comment{
+  display: flex;
+  align-items: center;
+}
+
+.comments form{
+  padding: 10px;
+  background-color: var(--primary-background-color);
+  border-radius: 5px;
+  width: 100%; 
+  display: flex;
+}
+
+.comments form textarea{
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background-color: var(--primary-background-color);
+  font-size: 1rem;
+}
+
+.comments form button{
+  border: none;
+  outline: none;
+}
+
+.comments form button .material-symbols-outlined{
+  color: var(--secondary-color);
+}
+
+/* each commment */
+
+.comment{
+  display: flex;
+  margin: 10px 0;
+}
+
+.comment .title{
+  margin-bottom: 10px;
+}
+
+.comment .msg{
+  background-color: var(--primary-background-color);
+  padding: 10px;
+  border-radius: 6px;
 }

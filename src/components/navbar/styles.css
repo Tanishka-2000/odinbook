@@ -15,6 +15,7 @@ nav li{
 nav a{
   color: var(--color);
   text-decoration: none;
+  display: inline-block;
 }
 
 nav :is(.first, .middle, .last){
@@ -92,8 +93,8 @@ nav .middle li{
   text-align: center;
   flex-grow: 1;
   height: 100%;
-  display: grid;
-  place-content: center;
+  /* display: grid;
+  place-content: center; */
 }
 
 nav .middle li:hover
@@ -122,7 +123,7 @@ nav .last{
   background-color: #333;
 }
 
-.mobile-view{
+nav .mobile-view{
   display: none;
 }
 

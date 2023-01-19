@@ -3,13 +3,14 @@ import image2 from '../../images/image2.jpg';
 import image3 from '../../images/image3.jpg';
 import Post from '../post/post.jsx';
 import './styles.css';
-import PostForm from '../postForm/postForm';
+// import PostForm from '../postForm/postForm';
 
 export default function Home(){
   return(
     <div className='home'>
-      {/* <div className='write'>
-        <span className="material-symbols-outlined">add</span>
+    {/* on cliking add button should display new post form*/}
+      <div className='write'>
+        <span className="material-symbols-outlined add-btn">add</span>
         <div>
           <p className='bold'>Create Story</p>
           <p>Share a photo or write something.</p>
@@ -17,8 +18,8 @@ export default function Home(){
       </div>
       <Post img={image1}/>
       <Post img={image2}/>
-      <Post img={image3}/>     */}
-      <PostForm />
+      <Post img={image3}/>    
+      {/* <PostForm /> */}
     </div>
   )
 }

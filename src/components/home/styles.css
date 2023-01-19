@@ -29,6 +29,11 @@
   font-size: 1.2rem;
 }
 
+.home .write .add-btn{
+  cursor: pointer;
+}
+
+
 @media (width < 1024px) {
   .home {
     margin-top: 130px;
