@@ -24,14 +24,6 @@ nav :is(.first, .middle, .last){
   gap: 10px;
 }
 
-nav .last .find-friends{
-  background-color: var(--primary-background-color);
-  border-radius: 30px;
-  padding: 10px 15px;
-  font-weight: 400;
-  font-size: .8rem;
-}
-
 nav .search{
   display: flex;
   gap: 5px;
@@ -51,7 +43,7 @@ nav .search input{
   padding: 8px 0;
   padding-left: 30px;
   border-radius: 30px;
-  background-color: var(--primary-background-color);
+  background-color: var(--third-background-color);
   outline: none;
   border: none;
   color: var(--color);
@@ -86,7 +78,7 @@ nav .round-icon{
   font-weight: 700;
   display: grid;
   place-content: center;
-  background-color: var(--primary-background-color);;
+  background-color: var(--third-background-color);;
   color: var(--color);;
 }
 nav .middle li{
@@ -99,7 +91,7 @@ nav .middle li{
 
 nav .middle li:hover
 {
-  background-color: var(--primary-background-color);
+  background-color: var(--third-background-color);
 }
 
 nav .middle li.active{
@@ -113,6 +105,14 @@ nav .icon{
 
 nav .last{
   justify-content: flex-end;
+}
+
+nav .last .find-friends{
+  background-color: var(--third-background-color);
+  border-radius: 30px;
+  padding: 10px 15px;
+  font-weight: 400;
+  font-size: .8rem;
 }
 
 #root.light nav .last :is(.round-icon, .find-friends):hover{

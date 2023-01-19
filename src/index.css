@@ -10,20 +10,22 @@
 
 body{
   font-family: 'Roboto', sans-serif;
-  background-color: #f0f2f5;
+  /* background-color: #f0f2f5; */
   /* background-color: #111; */
 }
 
 #root.light{
   --primary-background-color: #f0f2f5;
   --secondary-background-color: #fff;
+  --third-background-color:#f0f2f5;
   --color: #000;
   --secondary-color: #777;
 }
 
 #root.dark{
-  --primary-background-color: #111;
-  --secondary-background-color: #222;
-  --color: #eee;
+  --primary-background-color: #18191A; /*111*/
+  --secondary-background-color: #242526;/*#222*/;
+  --third-background-color:#3a3b3c;
+  --color: #ccc;
   --secondary-color: #999;  
 }

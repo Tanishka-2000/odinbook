@@ -40,7 +40,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: var(--primary-background-color);
+  background-color: var(--third-background-color);
   display: grid;
   place-content: center;
   margin-right: 10px;
@@ -65,7 +65,7 @@
 
 .post .btn-group{
   display: flex;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #ccc;
 }
 
 .post .btn-group button{
@@ -73,6 +73,7 @@
   padding: 5px;
   margin: 5px;
   border: none;
+  border-radius: 5px;
   outline: none;
   font-size: .8rem;
   background-color: var(--secondary-background-color);
@@ -84,7 +85,7 @@
 }
 
 .post .btn-group button:hover{
-  background-color: var(--primary-background-color);
+  background-color: var(--third-background-color);
 }
 
 /* comments section */
@@ -101,7 +102,7 @@
 
 .comments form{
   padding: 10px;
-  background-color: var(--primary-background-color);
+  background-color: var(--third-background-color);
   border-radius: 5px;
   width: 100%; 
   display: flex;
@@ -111,13 +112,15 @@
   flex-grow: 1;
   border: none;
   outline: none;
-  background-color: var(--primary-background-color);
+  background-color: var(--third-background-color);
   font-size: 1rem;
+  color: var(--color);
 }
 
 .comments form button{
   border: none;
   outline: none;
+  background-color: var(--third-background-color);
 }
 
 .comments form button .material-symbols-outlined{
@@ -136,7 +139,7 @@
 }
 
 .comment .msg{
-  background-color: var(--primary-background-color);
+  background-color: var(--third-background-color);
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 20px;
 }
