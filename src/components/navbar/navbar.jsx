@@ -1,4 +1,5 @@
 import './styles.css';
+import userImage from '../../images/user.jpg';
 
 export default function Navbar(){
   return(
@@ -10,7 +11,7 @@ export default function Navbar(){
         <li className='search desktop-view'><span className='material-symbols-outlined search-icon'>search</span><input type='text' placeholder='Search odinbook' /></li>
       {/* shown in mobile view */}
         <li className='logo-name mobile-view'><a href='#'><span className='name'>Odinbook</span></a></li>
-        <li title='profile' className='mobile-view'><a href='#'><span className='material-symbols-outlined round-icon'>person</span></a></li>
+        <li title='profile' className='mobile-view'><a href='#'><img className='account-img' src={userImage}/></a></li>
         <li title='settings' className='mobile-view'><a href='#'><span className='material-symbols-outlined round-icon'>apps</span></a></li>
       </div>
 
@@ -28,7 +29,8 @@ export default function Navbar(){
         <li className='search mobile-view'><span className='material-symbols-outlined search-icon'>search</span><input type='text' placeholder='Search odinbook' /></li>
         <li className='find-friends' title='search friends'><a href='#'>Find Friends</a></li>
       {/* desktop view  */}
-        <li title='profile' className='desktop-view'><a href='#'><span className='material-symbols-outlined round-icon'>person</span></a></li>
+        {/* <li title='profile' className='desktop-view'><a href='#'><span className='material-symbols-outlined round-icon'>person</span></a></li> */}
+        <li title='profile' className='desktop-view'><a href='#'><img className='account-img' src={userImage}/></a></li>
         <li title='settings' className='desktop-view'><a href='#'><span className='material-symbols-outlined round-icon'>apps</span></a></li>
         <li title='notifications' className='desktop-view'><a><span className='material-symbols-outlined round-icon'>notifications</span></a></li>
       </div>

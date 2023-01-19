@@ -1,11 +1,16 @@
 import './styles.css';
+import userImage from '../../images/user.jpg';
+import cat1 from '../../images/cat1.jpg';
+import cat2 from '../../images/cat2.jpg';
+import cat3 from '../../images/cat3.jpg';
+
 
 export default function Post({img}){
   return(
     <div className='post'>
       <div className='info'>
         <div className='head'>
-          <span className='material-symbols-outlined account-circle'>person</span>
+          <div><img className='account-img' src={userImage}/></div>
           <div>
             <p className='bold'>Snow White</p>
             <p className='light small'>6 january 2023</p>
@@ -30,7 +35,7 @@ export default function Post({img}){
 
       <div className='comments'>
         <div className='write-comment'>
-          <span className='material-symbols-outlined account-circle'>person</span>
+          <div><img className='account-img' src={userImage}/></div>
           <form>
             <textarea aria-label=' write comment' placeholder='write a comment...'></textarea>
             <button aria-label='share comment'><span className='material-symbols-outlined'>send</span></button>
@@ -38,7 +43,7 @@ export default function Post({img}){
         </div>
 
         <div className='comment'>
-          <span className='material-symbols-outlined account-circle'>person</span>  
+          <div><img className='account-img' src={cat1}/></div>
           <div className='msg'>       
             <p className='bold title'>Snow White <span className='light small'>6 january 2023</span></p>       
             <p>I am so inspired by your fashion sense.</p>
@@ -46,7 +51,7 @@ export default function Post({img}){
         </div>
 
         <div className='comment'>
-          <span className='material-symbols-outlined account-circle'>person</span>  
+          <div><img className='account-img' src={cat2}/></div>   
           <div className='msg'>       
             <p className='bold title'>Snow White <span className='light small'>6 january 2023</span></p>       
             <p>I am so inspired by your fashion sense. could you also post the price.</p>
@@ -54,7 +59,7 @@ export default function Post({img}){
         </div>
 
         <div className='comment'>
-          <span className='material-symbols-outlined account-circle'>person</span>  
+          <div><img className='account-img' src={cat3}/></div>   
           <div className='msg'>       
             <p className='bold title'>Snow White <span className='light small'>6 january 2023</span></p>       
             <p>Really like your shoes. </p>

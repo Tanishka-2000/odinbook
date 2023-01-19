@@ -88,6 +88,13 @@
   background-color: var(--third-background-color);
 }
 
+.post .account-img{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
 /* comments section */
 
 .comments{
