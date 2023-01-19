@@ -21,7 +21,7 @@ nav a{
 nav :is(.first, .middle, .last){
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 nav .search{
@@ -78,8 +78,8 @@ nav .round-icon{
   font-weight: 700;
   display: grid;
   place-content: center;
-  background-color: var(--third-background-color);;
-  color: var(--color);;
+  background-color: var(--third-background-color);
+  color: var(--color);
 }
 nav .middle li{
   text-align: center;
@@ -119,6 +119,45 @@ nav .account-img{
   width: 35px;
   height: 35px;
   border-radius: 50%;
+}
+
+nav .setting{
+  position: relative;
+}
+
+nav .setting .dropdown{
+  width: 160px;
+  transform: translateY(-50%) scaleY(0) ;
+  overflow-y: hidden;
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  background-color: var(--secondary-background-color);
+  color: var(--color);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: transform 300ms ease;
+  z-index: 1;
+}
+
+nav .setting:hover .dropdown{
+  transform: translateY(0%) scaleY(1);
+
+}
+
+nav .setting .dropdown div{
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+nav .setting .dropdown div:last-child{
+  border-bottom: none;
+}
+nav .setting .dropdown div:hover{
+  background-color: var(--primary-background-color);
 }
 
 #root.light nav .last :is(.round-icon, .find-friends):hover{

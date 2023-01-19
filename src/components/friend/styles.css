@@ -1,6 +1,7 @@
 .friend{
   width: 600px;
   background-color: var(--secondary-background-color);
+  color: var(--color);
   border-radius: 15px;
   display: flex;
   align-items: center;
