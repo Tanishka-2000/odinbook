@@ -1,7 +1,6 @@
 import { useState } from "react";
-import FacebookLogin from 'react-facebook-login';
-
-import './login.css';
+// import FacebookLogin from 'react-facebook-login';
+import './styles.css';
 
 export default function Login(){
   const [showPassword, setShowPassword] = useState(false);

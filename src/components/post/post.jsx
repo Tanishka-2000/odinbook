@@ -1,5 +1,5 @@
-import './post.css';
-import image1 from '../../images/image1.jpg';
+import './styles.css';
+
 export default function Post({img}){
   return(
     <div className='post'>
