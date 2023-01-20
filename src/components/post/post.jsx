@@ -43,7 +43,7 @@ function Comments(){
       <div className='write-comment'>
         <div><img className='account-img' src={userImage}/></div>
         <form>
-          <textarea aria-label=' write comment' placeholder='write a comment...'></textarea>
+          <textarea aria-label=' write comment' placeholder='write a comment...' rows={3}></textarea>
           <button aria-label='share comment'><span className='material-symbols-outlined'>send</span></button>
         </form>
       </div>

@@ -1,8 +1,12 @@
 import './styles.css';
 import userImage from '../../images/user.jpg';
-import cat2 from '../../images/cat2.jpg';
+import { useState } from 'react';
 
 export default function Navbar(){
+
+  const [showSettings, setShowSettings] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+
   return(
     <nav>
 
@@ -13,9 +17,9 @@ export default function Navbar(){
         {/* mobile view */}
         <li className='logo-name mobile-view'><a href='#'><span className='name'>Odinbook</span></a></li>
         <li title='profile' className='mobile-view'><a href='#'><img className='account-img' src={userImage}/></a></li>
-        <li title='settings' className='mobile-view setting '>
+        <li title='settings' className='mobile-view setting ' onClick={() => setShowSettings(prev => !prev)}>
           <span className='material-symbols-outlined round-icon'>apps</span>
-          <Dropdown />
+          {showSettings && <Dropdown setShowSettings={setShowSettings}/>}
         </li>
       </div>
 
@@ -24,9 +28,9 @@ export default function Navbar(){
         <li title='friends'><a href='#'><span className='material-symbols-outlined icon'>group</span></a></li>
         <li title='write post'><a href='#'><span className='material-symbols-outlined icon'>edit_square</span></a></li>
         {/* add link in mobile view */}
-        <li title='notifications' className='mobile-view notifications'>
-          <span className='material-symbols-outlined round-icon'>notifications</span>
-          <Notifications />
+        <li title='notifications' className='mobile-view notifications' onClick={() => setShowNotifications(prev => !prev)}>
+          <span className='material-symbols-outlined icon'>notifications</span>
+          {showNotifications && <Notifications setShowNotifications={setShowNotifications}/>}
         </li>
       </div>
 
@@ -36,14 +40,14 @@ export default function Navbar(){
         <li className='find-friends' title='search friends'><a href='#'>Find Friends</a></li>
       {/* desktop view  */}
         {/* <li title='profile' className='desktop-view'><a href='#'><span className='material-symbols-outlined round-icon'>person</span></a></li> */}
-        <li title='settings' className='desktop-view setting'>
+        <li className='desktop-view setting' onClick={() => setShowSettings(prev => !prev)}>
           <span className='material-symbols-outlined round-icon'>apps</span>
-          <Dropdown />
+          {showSettings && <Dropdown setShowSettings={setShowSettings}/>}
         </li>
         <li title='profile' className='desktop-view'><a href='#'><img className='account-img' src={userImage}/></a></li>
-        <li title='notifications' className='desktop-view notifications'>
+        <li title='notifications' className='desktop-view notifications' onClick={() => setShowNotifications(prev => !prev)}>
           <span className='material-symbols-outlined round-icon'>notifications</span>
-          <Notifications />
+          {showNotifications && <Notifications setShowNotifications={setShowNotifications}/>}
         </li>
       </div>
 
@@ -51,9 +55,17 @@ export default function Navbar(){
   )
 }
 
-function Dropdown() {
+function Dropdown({setShowSettings}) {
   return(
     <div className='dropdown'>
+      <div className='header'>
+        <h2>Settings</h2>
+        <span className="material-symbols-outlined round-icon"
+          onClick={() => setShowSettings(true)} //setting value to true as it will be !true > > false by <li>'s onClick handler
+        >
+          close
+        </span>
+      </div>
       <div>
         <span className="material-symbols-outlined round-icon">bookmark_added</span>
         saved posts
@@ -74,7 +86,7 @@ function Dropdown() {
   )
 }
 
-function Notifications() {
+function Notifications({setShowNotifications}) {
   // type: post liked / commented on post / post shared / unfriend
   // populate userId with name and img;
   let msgs = [
@@ -86,6 +98,14 @@ function Notifications() {
 
   return(
     <div className='notificatons-list'>
+      <div className='header'>
+        <h2>Notifications</h2>
+        <span className="material-symbols-outlined round-icon" 
+          onClick={() => setShowNotifications(true)} //setting value to true as it will be !true > > false by <li>'s onClick handler
+        >
+          close
+        </span>
+      </div>
       {msgs.map((msg, i) => {
         switch(msg.type){
           case 'post_liked' : return <div key={i}>{msg.user.name} has liked your <a href='#'>post</a></div>; break;

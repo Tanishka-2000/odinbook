@@ -9,7 +9,7 @@ export default function Home(){
   return(
     <div className='home'>
     {/* on cliking add button should display new post form*/}
-      {/* <div className='write'>
+      <div className='write'>
         <span className="material-symbols-outlined add-btn">add</span>
         <div>
           <p className='bold'>Create Story</p>
@@ -18,9 +18,9 @@ export default function Home(){
       </div>
       <Post img={image1}/>
       <Post img={image2}/>
-      <Post img={image3}/>     */}
+      <Post img={image3}/>    
       
-      <Users />
+      {/* <Users /> */}
     </div>
   )
 }
