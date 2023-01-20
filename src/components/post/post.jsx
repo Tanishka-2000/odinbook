@@ -32,40 +32,45 @@ export default function Post({img}){
       </div>
 
       {/* comments should be visible on clicking comment button */}
+      <Comments />
+  </div>
+  )
+}
 
-      <div className='comments'>
-        <div className='write-comment'>
-          <div><img className='account-img' src={userImage}/></div>
-          <form>
-            <textarea aria-label=' write comment' placeholder='write a comment...'></textarea>
-            <button aria-label='share comment'><span className='material-symbols-outlined'>send</span></button>
-          </form>
-        </div>
+function Comments(){
+  return(
+    <div className='comments'>
+      <div className='write-comment'>
+        <div><img className='account-img' src={userImage}/></div>
+        <form>
+          <textarea aria-label=' write comment' placeholder='write a comment...'></textarea>
+          <button aria-label='share comment'><span className='material-symbols-outlined'>send</span></button>
+        </form>
+      </div>
 
-        <div className='comment'>
-          <div><img className='account-img' src={cat1}/></div>
-          <div className='msg'>       
-            <p className='bold title'>Snow White <span className='light small'>6 january 2023</span></p>       
-            <p>I am so inspired by your fashion sense.</p>
-          </div>  
-        </div>
+      <div className='comment'>
+        <div><img className='account-img' src={cat1}/></div>
+        <div className='msg'>       
+          <p className='bold title'>Snow White <span className='light small'>6 january 2023</span></p>       
+          <p>I am so inspired by your fashion sense.</p>
+        </div>  
+      </div>
 
-        <div className='comment'>
-          <div><img className='account-img' src={cat2}/></div>   
-          <div className='msg'>       
-            <p className='bold title'>Snow White <span className='light small'>6 january 2023</span></p>       
-            <p>I am so inspired by your fashion sense. could you also post the price.</p>
-          </div>  
-        </div>
+      <div className='comment'>
+        <div><img className='account-img' src={cat2}/></div>   
+        <div className='msg'>       
+          <p className='bold title'>Snow White <span className='light small'>6 january 2023</span></p>       
+          <p>I am so inspired by your fashion sense. could you also post the price.</p>
+        </div>  
+      </div>
 
-        <div className='comment'>
-          <div><img className='account-img' src={cat3}/></div>   
-          <div className='msg'>       
-            <p className='bold title'>Snow White <span className='light small'>6 january 2023</span></p>       
-            <p>Really like your shoes. </p>
-          </div>  
-        </div>
-      </div>  
-    </div>
+      <div className='comment'>
+        <div><img className='account-img' src={cat3}/></div>   
+        <div className='msg'>       
+          <p className='bold title'>Snow White <span className='light small'>6 january 2023</span></p>       
+          <p>Really like your shoes. </p>
+        </div>  
+      </div>
+    </div>  
   )
 }

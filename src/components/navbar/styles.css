@@ -85,6 +85,7 @@ nav .middle li{
   text-align: center;
   flex-grow: 1;
   height: 100%;
+  border-radius: 5px;
   /* display: grid;
   place-content: center; */
 }
@@ -156,8 +157,48 @@ nav .setting .dropdown div{
 nav .setting .dropdown div:last-child{
   border-bottom: none;
 }
+
 nav .setting .dropdown div:hover{
   background-color: var(--primary-background-color);
+}
+
+nav .notifications{
+  position: relative;
+  cursor: pointer;
+}
+
+nav .notificatons-list{
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 300px;
+  color: var(--color);
+  background-color: var(--secondary-background-color);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px 3px var(--third-background-color);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 400ms ease;
+  z-index: 1;
+}
+
+nav .notifications:hover .notificatons-list{
+  opacity: 1;
+  transform: translateX(-0);
+}
+
+nav .notificatons-list > div{
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+nav .notificatons-list > div > a{
+  font-weight:700;
+}
+
+nav .notificatons-list > div > a:hover{
+  text-decoration: underline;
 }
 
 #root.light nav .last :is(.round-icon, .find-friends):hover{

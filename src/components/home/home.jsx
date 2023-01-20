@@ -3,7 +3,8 @@ import image2 from '../../images/image2.jpg';
 import image3 from '../../images/image3.jpg';
 import Post from '../post/post.jsx';
 import './styles.css';
-import Friend  from '../friend/friend';
+import Users from '../users/users';
+
 export default function Home(){
   return(
     <div className='home'>
@@ -19,11 +20,7 @@ export default function Home(){
       <Post img={image2}/>
       <Post img={image3}/>     */}
       
-      <Friend />
-      <Friend />
-      <Friend />
-      <Friend />
-      <Friend />
+      <Users />
     </div>
   )
 }

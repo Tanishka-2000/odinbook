@@ -1,4 +1,4 @@
-.friend{
+.user{
   width: 600px;
   background-color: var(--secondary-background-color);
   color: var(--color);
@@ -10,13 +10,17 @@
   margin: 10px 0;
 }
 
+.users-list-heading{
+  color: var(--color);
+  margin: 20px 0;
+}
+
 @media (width < 650px){
-  .friend{
+  .user{
     width: 95%;
   }
 }
-
-.friend button{
+.user button{
   margin-left: auto;
   background-color: var(--color);
   color: var(--primary-background-color);
@@ -29,12 +33,12 @@
   outline: none;
 }
 
-.friend button:hover{
+.user button:hover{
   transform: scale(1.05);
 }
 
 
-.friend .account-img{
+.user .account-img{
   width: 35px;
   height: 35px;
   border-radius: 50%;
