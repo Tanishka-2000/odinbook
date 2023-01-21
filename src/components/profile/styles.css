@@ -1,0 +1,86 @@
+.profile{
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 50px;
+  color: var(--color);
+  background-color: var(--secondary-background-color);
+}
+
+
+@media (width < 550px) {
+  .profile{
+    width: 95%;
+    padding: 30px 10px;
+  }
+}
+
+.profile .profile-image{
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--secondary-background-color);
+}
+
+.profile .profile-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile .name{
+  color: var(--color);
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+.profile .name h1{
+  margin: 5px 0;
+}
+
+.profile .edit-btn,
+.profile .see-friends-btn{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  color: var(--color);
+  background-color: var(--primary-background-color);
+  border-radius: 10px;
+  font-size: 1.2rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile .edit-btn:hover,
+.profile .see-friends-btn:hover{
+  background-color: var(--third-background-color);
+}
+
+.profile .bio{
+  width: 100%;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.profile .bio > div{
+  display: flex;
+  margin: 10px;
+  padding: 5px 0;
+}
+
+.profile .material-symbols-outlined{
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-right: 10px;
+  color: var(--color);
+}
+
+.profile .posts{
+  background-color: var(--primary-background-color);
+}

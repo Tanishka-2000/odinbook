@@ -1,7 +1,7 @@
 nav{
   display: grid;
   grid-template-columns: 3fr 3fr 3fr;
-  padding: 8px 20px;
+  padding: 8px 10px;
   background-color: var(--secondary-background-color);
   position: fixed;
   top: 0;
