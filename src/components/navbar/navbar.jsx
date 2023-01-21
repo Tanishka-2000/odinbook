@@ -39,13 +39,12 @@ export default function Navbar(){
         <li className='search mobile-view'><span className='material-symbols-outlined search-icon'>search</span><input type='text' placeholder='Search odinbook' /></li>
         <li className='find-friends' title='search friends'><a href='#'>Find Friends</a></li>
       {/* desktop view  */}
-        {/* <li title='profile' className='desktop-view'><a href='#'><span className='material-symbols-outlined round-icon'>person</span></a></li> */}
-        <li className='desktop-view setting' onClick={() => setShowSettings(prev => !prev)}>
+        <li className='desktop-view setting' onClick={() => setShowSettings(prev => !prev)} tabIndex='0'>
           <span className='material-symbols-outlined round-icon'>apps</span>
           <Dropdown setShowSettings={setShowSettings} showSettings={showSettings}/>
         </li>
         <li title='profile' className='desktop-view'><a href='#'><img className='account-img' src={userImage}/></a></li>
-        <li title='notifications' className='desktop-view notifications' onClick={() => setShowNotifications(prev => !prev)}>
+        <li title='notifications' className='desktop-view notifications' onClick={() => setShowNotifications(prev => !prev)} tabIndex='0'>
           <span className='material-symbols-outlined round-icon'>notifications</span>
           <Notifications setShowNotifications={setShowNotifications} showNotifications={showNotifications}/>
         </li>

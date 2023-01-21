@@ -3,8 +3,9 @@
 // import image3 from '../../images/image3.jpg';
 // import Post from '../post/post.jsx';
 import './styles.css';
-import Profile from '../profile/profie';
+// import Profile from '../profile/profie';
 // import Users from '../users/users';
+import EditProfile from '../editProfileForm/editProfile';
 
 export default function Home(){
   return(
@@ -20,8 +21,9 @@ export default function Home(){
       <Post img={image1}/>
       <Post img={image2}/>
       <Post img={image3}/>     */}
-      <Profile />
+      {/* <Profile /> */}
       {/* <Users /> */}
+      <EditProfile />
     </div>
   )
 }

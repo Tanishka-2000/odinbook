@@ -1,0 +1,87 @@
+.edit-profile{
+  width: 600px;
+  background-color: var(--secondary-background-color);
+  padding: 10px;
+  border-radius: 15px;
+  color: var(--color);
+}
+
+@media (width < 650px){
+  .edit-profile{
+    min-width: 95%;
+  }
+}
+
+.edit-profile > div{
+  padding: 10px;
+  padding-right: 0px;
+  border-bottom: 1px solid var(--third-background-color);
+}
+
+.edit-profile .header{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--third-background-color);
+}
+
+.edit-profile .header .back:hover{
+  background-color: var(--primary-background-color);
+}
+
+.edit-profile .material-symbols-outlined{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  background-color: var(--third-background-color);
+  margin-right: 10px;
+}
+
+.edit-profile > div > *{
+  display: flex;
+  align-items: center;
+  margin: 13px 0;
+}
+
+.edit-profile form{
+  flex-grow: 1;
+}
+
+.edit-profile input{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--third-background-color);
+  background-color: var(--secondary-background-color);
+  padding: 10px;
+  color: var(--color);
+  font-size: .9rem;
+}
+
+.edit-profile input::placeholder{
+  color: #177cdd;
+}
+
+.edit-profile input:focus-visible{
+  outline: 1px solid var(--color);
+}
+
+.edit-profile li{
+  border-bottom: 1px solid var(--third-background-color);
+}
+
+.edit-profile .delete{
+  margin-left: auto;
+}
+
+.edit-profile .delete:hover{
+  background-color: var(--primary-background-color);
+}
+
+.edit-profile > div > *:last-child{
+  border-bottom: none;
+}
+
+.edit-profile > div > *:last-child:is(:not(li)) input{
+  border-bottom: none;
+}
