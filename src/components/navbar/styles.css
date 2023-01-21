@@ -129,7 +129,7 @@ nav .setting{
 
 nav .setting .dropdown{
   width: 200px;
-  /* transform: translateY(-50%) scaleY(0) ; */
+  transform: translateY(-50%) scaleY(0) ;
   overflow-y: hidden;
   position: absolute;
   top: 40px;
@@ -138,25 +138,24 @@ nav .setting .dropdown{
   color: var(--color);
   border: 1px solid #ccc;
   border-radius: 5px;
-  /* transition: transform 300ms ease; */
+  transition: transform 300ms ease;
   z-index: 1;
-  animation: animateDropdown 300ms;
+  /* animation: animateDropdown 300ms; */
 }
 
-@keyframes animateDropdown{
+nav .setting .dropdown.shown{
+  transform: translateY(0%) scaleY(1);
+}
+
+/* @keyframes animateDropdown{
   from {transform: translateY(-50%) scaleY(0)}
   to {transform: translateY(0%) scaleY(1)}
-}
+} */
 
 nav .setting .dropdown .header{
   display: flex;
   justify-content: space-between;
 }
-
-/* nav .setting:hover .dropdown{
-  transform: translateY(0%) scaleY(1);
-
-} */
 
 nav .setting .dropdown div{
   padding: 10px;
@@ -189,9 +188,9 @@ nav .notificatons-list{
   border-radius: 8px;
   box-shadow: 2px 2px 5px 3px var(--third-background-color);
   animation: animateNotifications 400ms ease;
-  /* opacity: 0;
-  transform: translateX(100%); */
-  /* transition: all 400ms ease; */
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 400ms ease;
   z-index: 1;
 }
 
@@ -204,15 +203,15 @@ nav .notifications.mobile-view:hover{
   background-color: var(--third-background-color);
 }
 
-/* nav .notifications:hover .notificatons-list{
+nav .notifications .notificatons-list.shown{
   opacity: 1;
   transform: translateX(-0);
-} */
+} 
 
-@keyframes animateNotifications{
+/* @keyframes animateNotifications{
   from {opacity: 0; transform: translateX(100%);}
   to {opacity: 1; transform: translateX(-0);}
-}
+} */
 
 nav .notificatons-list > div{
   padding: 15px;

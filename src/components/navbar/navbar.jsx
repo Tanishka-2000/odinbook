@@ -19,7 +19,7 @@ export default function Navbar(){
         <li title='profile' className='mobile-view'><a href='#'><img className='account-img' src={userImage}/></a></li>
         <li title='settings' className='mobile-view setting ' onClick={() => setShowSettings(prev => !prev)}>
           <span className='material-symbols-outlined round-icon'>apps</span>
-          {showSettings && <Dropdown setShowSettings={setShowSettings}/>}
+          <Dropdown setShowSettings={setShowSettings} showSettings={showSettings}/>
         </li>
       </div>
 
@@ -30,7 +30,7 @@ export default function Navbar(){
         {/* add link in mobile view */}
         <li title='notifications' className='mobile-view notifications' onClick={() => setShowNotifications(prev => !prev)}>
           <span className='material-symbols-outlined icon'>notifications</span>
-          {showNotifications && <Notifications setShowNotifications={setShowNotifications}/>}
+          <Notifications setShowNotifications={setShowNotifications} showNotifications={showNotifications}/>
         </li>
       </div>
 
@@ -42,12 +42,12 @@ export default function Navbar(){
         {/* <li title='profile' className='desktop-view'><a href='#'><span className='material-symbols-outlined round-icon'>person</span></a></li> */}
         <li className='desktop-view setting' onClick={() => setShowSettings(prev => !prev)}>
           <span className='material-symbols-outlined round-icon'>apps</span>
-          {showSettings && <Dropdown setShowSettings={setShowSettings}/>}
+          <Dropdown setShowSettings={setShowSettings} showSettings={showSettings}/>
         </li>
         <li title='profile' className='desktop-view'><a href='#'><img className='account-img' src={userImage}/></a></li>
         <li title='notifications' className='desktop-view notifications' onClick={() => setShowNotifications(prev => !prev)}>
           <span className='material-symbols-outlined round-icon'>notifications</span>
-          {showNotifications && <Notifications setShowNotifications={setShowNotifications}/>}
+          <Notifications setShowNotifications={setShowNotifications} showNotifications={showNotifications}/>
         </li>
       </div>
 
@@ -55,9 +55,9 @@ export default function Navbar(){
   )
 }
 
-function Dropdown({setShowSettings}) {
+function Dropdown({setShowSettings, showSettings}) {
   return(
-    <div className='dropdown'>
+    <div className={`dropdown ${showSettings ? 'shown' : ''}`}>
       <div className='header'>
         <h2>Settings</h2>
         <span className="material-symbols-outlined round-icon"
@@ -86,7 +86,7 @@ function Dropdown({setShowSettings}) {
   )
 }
 
-function Notifications({setShowNotifications}) {
+function Notifications({setShowNotifications, showNotifications}) {
   // type: post liked / commented on post / post shared / unfriend
   // populate userId with name and img;
   let msgs = [
@@ -97,7 +97,7 @@ function Notifications({setShowNotifications}) {
   ];
 
   return(
-    <div className='notificatons-list'>
+    <div className={`notificatons-list ${showNotifications ? 'shown' : ''}`}>
       <div className='header'>
         <h2>Notifications</h2>
         <span className="material-symbols-outlined round-icon" 
