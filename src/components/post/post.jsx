@@ -1,29 +1,29 @@
 import './styles.css';
-import userImage from '../../images/user.jpg';
-import cat1 from '../../images/cat1.jpg';
-import cat2 from '../../images/cat2.jpg';
-import cat3 from '../../images/cat3.jpg';
+// import userImage from '../../images/user.jpg';
+// import cat1 from '../../images/cat1.jpg';
+// import cat2 from '../../images/cat2.jpg';
+// import cat3 from '../../images/cat3.jpg';
 
 
-export default function Post({img}){
+export default function Post({data}){
   return(
     <div className='post'>
       <div className='info'>
         <div className='head'>
-          <div><img className='account-img' src={userImage}/></div>
+          <div><img className='account-img' src={data.author.image}/></div>
           <div>
-            <p className='bold'>Snow White</p>
-            <p className='light small'>6 january 2023</p>
+            <p className='bold'>{data.author.name}</p>
+            <p className='light small'>n{new Date(data.postedAt).toDateString()}</p>
           </div>
         </div>  
-        <p className='regular'>These 2 women had drastic makeovers to restore their appearance.</p>
+        <p className='regular'>{data.message}</p>
       </div>  
      
-      <img src={img}/>
+      <img src={data.imageUrl}/>
 
       <div className='data'>
-        <p>24K likes</p>
-        <p>1.3K comments</p>
+        <p>{data.likes} likes</p>
+        <p>{data.comments.length} comments</p>
       </div>
 
       <div className='btn-group'>
@@ -32,7 +32,7 @@ export default function Post({img}){
       </div>
 
       {/* comments should be visible on clicking comment button */}
-      <Comments />
+      {/* <Comments /> */}
   </div>
   )
 }

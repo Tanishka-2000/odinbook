@@ -24,6 +24,7 @@ export async function action({request}){
   }
 
   localStorage.setItem('token', data.token);
+  localStorage.setItem('avatar', data.image);
   // console.log(data);
   return redirect('/');
 }
@@ -31,7 +32,6 @@ export async function action({request}){
 export default function Login(){
   const [showPassword, setShowPassword] = useState(false);
   const data = useActionData();
-  console.log(data);
 
   return(
     <div className='login-page'>

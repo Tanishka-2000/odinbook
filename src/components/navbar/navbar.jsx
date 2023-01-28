@@ -1,5 +1,5 @@
 import './styles.css';
-import userImage from '../../images/user.jpg';
+// import userImage from '../../images/user.jpg';
 import { useState } from 'react';
 
 export default function Navbar(){
@@ -16,7 +16,7 @@ export default function Navbar(){
         {/* <li className='search desktop-view'><span className='material-symbols-outlined search-icon'>search</span><input type='text' placeholder='Search odinbook' /></li> */}
         {/* mobile view */}
         <li className='logo-name '><a href='#'><span className='name'>Odinbook</span></a></li>
-        <li title='profile' className='mobile-view'><a href='#'><img className='account-img' src={userImage}/></a></li>
+        <li title='profile' className='mobile-view'><a href='#'><img className='account-img' src={localStorage.getItem('avatar')}/></a></li>
         <li title='settings' className='mobile-view setting ' onClick={() => setShowSettings(prev => !prev)}>
           <span className='material-symbols-outlined round-icon'>apps</span>
           <Dropdown setShowSettings={setShowSettings} showSettings={showSettings}/>
@@ -43,7 +43,7 @@ export default function Navbar(){
           <span className='material-symbols-outlined round-icon'>apps</span>
           <Dropdown setShowSettings={setShowSettings} showSettings={showSettings}/>
         </li>
-        <li title='profile' className='desktop-view'><a href='#'><img className='account-img' src={userImage}/></a></li>
+        <li title='profile' className='desktop-view'><a href='#'><img className='account-img' src={localStorage.getItem('avatar')}/></a></li>
         <li title='notifications' className='desktop-view notifications' onClick={() => setShowNotifications(prev => !prev)} tabIndex='0'>
           <span className='material-symbols-outlined round-icon'>notifications</span>
           <Notifications setShowNotifications={setShowNotifications} showNotifications={showNotifications}/>

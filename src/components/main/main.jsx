@@ -6,7 +6,7 @@ export async function loader(){
   const token = localStorage.getItem('token');
   console.log(token);
   if(!token) return redirect('/login');
-  return null;
+  return null
 }
 
 export default function Main(){
