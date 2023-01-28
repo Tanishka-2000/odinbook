@@ -1,6 +1,7 @@
 import './styles.css';
 // import userImage from '../../images/user.jpg';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar(){
 
@@ -12,10 +13,10 @@ export default function Navbar(){
 
       <div className='first'>
         {/* desktop view */}
-        <li className='logo '><a href='#'><span className='symbol'>B</span></a></li>
+        <li className='logo '><Link to='/'><span className='symbol'>B</span></Link></li>
         {/* <li className='search desktop-view'><span className='material-symbols-outlined search-icon'>search</span><input type='text' placeholder='Search odinbook' /></li> */}
         {/* mobile view */}
-        <li className='logo-name '><a href='#'><span className='name'>Odinbook</span></a></li>
+        <li className='logo-name '><Link to='/'><span className='name'>Odinbook</span></Link></li>
         <li title='profile' className='mobile-view'><a href='#'><img className='account-img' src={localStorage.getItem('avatar')}/></a></li>
         <li title='settings' className='mobile-view setting ' onClick={() => setShowSettings(prev => !prev)}>
           <span className='material-symbols-outlined round-icon'>apps</span>

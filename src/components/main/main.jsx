@@ -1,5 +1,6 @@
 import { Outlet, redirect } from "react-router-dom";
 import Navbar from "../navbar/navbar";
+import './styles.css';
 
 
 export async function loader(){
@@ -11,9 +12,9 @@ export async function loader(){
 
 export default function Main(){
   return(
-    <>
+    <div className='main'>
     <Navbar />
     <Outlet/>
-    </>
+    </div>
   )
 }
