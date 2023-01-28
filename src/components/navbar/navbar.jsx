@@ -12,10 +12,10 @@ export default function Navbar(){
 
       <div className='first'>
         {/* desktop view */}
-        <li className='logo desktop-view'><a href='#'><span className='symbol'>B</span></a></li>
-        <li className='search desktop-view'><span className='material-symbols-outlined search-icon'>search</span><input type='text' placeholder='Search odinbook' /></li>
+        <li className='logo '><a href='#'><span className='symbol'>B</span></a></li>
+        {/* <li className='search desktop-view'><span className='material-symbols-outlined search-icon'>search</span><input type='text' placeholder='Search odinbook' /></li> */}
         {/* mobile view */}
-        <li className='logo-name mobile-view'><a href='#'><span className='name'>Odinbook</span></a></li>
+        <li className='logo-name '><a href='#'><span className='name'>Odinbook</span></a></li>
         <li title='profile' className='mobile-view'><a href='#'><img className='account-img' src={userImage}/></a></li>
         <li title='settings' className='mobile-view setting ' onClick={() => setShowSettings(prev => !prev)}>
           <span className='material-symbols-outlined round-icon'>apps</span>

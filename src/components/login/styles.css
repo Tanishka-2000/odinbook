@@ -30,7 +30,7 @@
   border-radius: 10px;
   box-shadow: 1px 1px 3px 3px #ddd;
   padding: 15px;
-  position: relative;
+  /* position: relative; */
 }
 
 .login-page .login-form form{
@@ -42,7 +42,7 @@
   display: block;
   width: 100%;
   padding: 15px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   border: 1px solid #aaa;
   border-radius: 4px;
   caret-color: #1b74e4;
@@ -54,12 +54,22 @@
   box-shadow: 0px 0px 4px 0px #1b74e4;
 }
 
+.password-container{
+  position: relative;
+}
+
 .showPassword{
   position: absolute;
-  top: 95px;
-  right: 20px;
+  top: 13px;
+  right: 10px;
   color: #999;
   cursor: pointer;
+}
+
+p.error{
+  color: red;
+  font-size: .8rem;
+  margin-top: 5px;
 }
 
 .login-page button{
@@ -74,6 +84,7 @@
 
 .login-page button.login-btn{
   background-color: #222;
+  margin-top: 20px;
 }
 
 .login-page button.login-btn:hover{
@@ -90,12 +101,19 @@
   margin-top: 20px;
 }
 
+.login-page button.signup-btn a{
+  color: white;
+  text-decoration: none;
+}
+
 .login-page .login-msg{
   font-size: .8rem;
   color: #aaa;
 }
 
-.login-page .login-msg button{
+
+.login-page .login-msg a{
+  text-decoration: none;
   font-size: .8rem;
   color: #aaa;
   background-color: white;
@@ -105,8 +123,8 @@
   display: inline;
   border: none;
 }
-.login-page .login-msg button:hover{
-  color: #777;
+.login-page .login-msg a:hover{
+  color: #666;
 }
 
 .kep-login-facebook.metro {

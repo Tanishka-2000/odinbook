@@ -9,6 +9,7 @@ export default function Profile(){
 
       <div className='profile-image'>
         <img src={userImage} />
+        <button className='change-photo'><span className='material-symbols-outlined camera'>photo_camera</span></button>
       </div>
 
       <div className='name'>

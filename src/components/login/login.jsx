@@ -1,51 +1,62 @@
+import { Form, Link, redirect, useActionData } from "react-router-dom"
 import { useState } from "react";
-// import FacebookLogin from 'react-facebook-login';
-import './styles.css';
+
+export async function action({request}){
+  const formData = await request.formData();
+  const credentials = Object.fromEntries(formData);
+  // console.log(credentials);
+  const response = await fetch('http://localhost:3000/api/login', {
+    method: 'post',
+    headers:{
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    body: JSON.stringify(credentials)
+  });
+
+  const data = await response.json();
+  
+  if(response.status >= 400) {
+    const err = {};
+    data.forEach(error => {
+      err[error.param] = error.msg;
+    });
+    return {credentials, err};
+  }
+
+  localStorage.setItem('token', data.token);
+  // console.log(data);
+  return redirect('/');
+}
 
 export default function Login(){
   const [showPassword, setShowPassword] = useState(false);
-  const [login, setLogin] = useState(true);
+  const data = useActionData();
+  console.log(data);
 
-  <span class="material-symbols-outlined">
-  visibility_off
-  </span>
   return(
     <div className='login-page'>
       <div className='hero-container'>
         <h1>odinbook</h1>
         <p>Odinbook helps you connect and share with people in life.</p>
       </div>
-      { login ? 
+    
       <div className='login-form'>
-        <form>        
-          <input id='username' type='text' placeholder='Email address' aria-label='Email address'/>   
-          <input id='password' type={showPassword ? 'text' : 'password'} placeholder='password' aria-label='password'/>
-          <span className='material-symbols-outlined showPassword' onClick={() => setShowPassword(prev => !prev)}>{showPassword ? 'visibility_off' : 'visibility'}</span>     
+        <Form method='post'>  
+
+          <input id='email' name='email' type='text' placeholder='Email address' aria-label='Email address'defaultValue={data ? data.credentials.email : ''}/>
+          {data ? data.err.email ? <p className='error'>{data.err.email}</p> : '' : ''}
+         
+          <div className='password-container'>
+            <input id='password' name='password' type={showPassword ? 'text' : 'password'} placeholder='password' aria-label='password'/>
+            <span className='material-symbols-outlined showPassword' onClick={() => setShowPassword(prev => !prev)}>{showPassword ? 'visibility_off' : 'visibility'}</span>
+          </div>
+          {data ? data.err.password ? <p className='error'>{data.err.password}</p> : '' : ''}     
+          
           <button type='submit' className='login-btn'>Log in</button>
-        </form>
-        <button className='signup-btn' onClick={() => setLogin(false)}>Create New Account</button>
         
+        </Form>
+        <Link to='/signup'><button className='signup-btn'>Create New Account</button></Link>    
       </div>
-        :
-      <div className='signup-form'>
-        <form>        
-          <input id='name' type='text' placeholder='Name' aria-label='Name'/>
-          <input id='username' type='text' placeholder='Email address' aria-label='Eamil address'/>
-          {/* <button type='button' onClick={() => setShowPassword(prev => !prev)}>show</button> */}
-          <input id='password' type={showPassword ? 'text' : 'password'} placeholder='Password' aria-label='password'/>
-          <button type='submit' className='signup-btn'>sign up</button>
-          <p className='login-msg'>already have an account? <button type='button' onClick={() => setLogin(true)}>log in</button></p>
-        </form> 
-      </div>
-      }
-    </div>
+    </div>  
   )
 }
-
-// const responseFacebook = response => console.log(response);
-
-{/* <FacebookLogin
-        appId="1199609287615763"
-        autoLoad={true}
-        fields="name,email,picture"    
-        callback={responseFacebook} />  */}
