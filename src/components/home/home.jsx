@@ -1,4 +1,4 @@
-import { redirect, useLoaderData } from 'react-router-dom';
+import { redirect, useLoaderData, Link } from 'react-router-dom';
 // import image1 from '../../images/image1.jpg';
 // import image2 from '../../images/image2.jpg';
 // import image3 from '../../images/image3.jpg';
@@ -44,7 +44,9 @@ export default function Home({saved}){
       {
         saved ? <h1 className='header'>Saved Posts</h1> :
         <div className='write'>
-          <span className="material-symbols-outlined add-btn">add</span>
+          <Link to='/write' className='add'>
+            <span className="material-symbols-outlined">add</span>
+          </Link>
           <div>
             <p className='bold'>Create Story</p>
             <p>Share a photo or write something.</p>

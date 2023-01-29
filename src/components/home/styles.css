@@ -30,7 +30,7 @@
   background-color: var(--third-background-color);
   display: grid;
   place-content: center;
-  margin-right: 10px;
+  
 }
 
 .home .write .bold{
@@ -38,6 +38,10 @@
   font-size: 1.2rem;
 }
 
-.home .write .add-btn{
-  cursor: pointer;
+.home .add{
+  background-color: transparent;
+  border: none;
+  margin-right: 10px;
+  color: var(--color);
+  text-decoration: none;
 }

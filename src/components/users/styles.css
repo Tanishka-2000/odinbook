@@ -5,8 +5,12 @@
   align-items: center;
 } */
 
-.user{
+.users{
   width: 600px;
+}
+
+.user{
+  width: 100%;
   background-color: var(--secondary-background-color);
   color: var(--color);
   border-radius: 15px;
@@ -22,9 +26,9 @@
   margin: 20px 0;
 }
 
-@media (width < 650px){
-  .user{
-    width: 95%;
+@media (width < 620px){
+  .users{
+    width: 100%;
   }
 }
 .user button{

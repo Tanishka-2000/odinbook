@@ -26,7 +26,6 @@ nav :is(.first, .middle, .last){
   display: flex;
   align-items: center;
   gap: 15px;
-  /* margin: 2px 0; */
 }
 
 nav .search{
@@ -111,12 +110,21 @@ nav .last{
   justify-content: flex-end;
 }
 
-nav .last .find-friends{
+nav .last .find-friends,
+nav .last .requests{
   background-color: var(--third-background-color);
   border-radius: 30px;
   padding: 10px 15px;
   font-weight: 400;
   font-size: .8rem;
+}
+
+nav .last .requests{
+  max-width: 150px;
+}
+
+nav .last :is(.round-icon, .find-friends, .requests):hover{
+  background-color: var(--primary-background-color);
 }
 
 nav .account-img{
@@ -234,10 +242,6 @@ nav .notificatons-list > div > a:hover{
   text-decoration: underline;
 }
 
-nav .last :is(.round-icon, .find-friends):hover{
-  background-color: var(--primary-background-color);
-}
-
 /* #root.dark nav .last :is(.round-icon, .find-friends):hover{
   background-color: #333;
 } */
@@ -259,7 +263,13 @@ nav .mobile-view{
   nav .last .search{
     flex-grow: 3;
   }
-  nav .last .find-friends{
+  nav .last li{
     flex-grow: 1;
+  }
+  /* nav .last .find-friends{
+    flex-grow: 1;
+  } */
+  nav :is(.first, .middle, .last){
+    margin-bottom: 8px;
   }
 }

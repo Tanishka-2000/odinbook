@@ -1,5 +1,4 @@
 import './styles.css';
-import cat from '../../images/cat3.jpg';
 import {redirect, useLoaderData} from 'react-router-dom';
 import { useState } from 'react';
 
@@ -24,7 +23,7 @@ export async function requestsLoader(){
 export default function Requests(){
   const [sentRequests, setSentRequests] = useState(true);
   const {sent, recieved} = useLoaderData();
-  console.log({sent, recieved});
+  // console.log({sent, recieved});
   
   return(
     <div className='requests'>
@@ -33,9 +32,16 @@ export default function Requests(){
         <button onClick={() => setSentRequests(false)}>Recived Request</button>
       </div>
       {sentRequests ? 
-        sent.map(request => <SentRequest key={request._id} request={request}/>)
+        <div>
+          <h1 className='header'>Sent Requests</h1>
+          {sent.map(request => <SentRequest key={request._id} request={request}/>)}
+        </div>
         :
-        recieved.map(request => <RecivedRequest key={request._id} request={request} />)}
+        <div>
+          <h1 className='header'>Recieved Requests</h1>
+          {recieved.map(request => <RecivedRequest key={request._id} request={request} />)}
+        </div>
+      }  
     </div>
   )
 }
@@ -54,7 +60,12 @@ function SentRequest({request}){
       
       <div className='status'>
         <p className=''>...{request.status}</p>
-        <button className='delete'><span className="material-symbols-outlined">delete</span></button>
+        {
+          request.status === 'pending' ? 
+          ''
+          :
+          <button className='delete'><span className="material-symbols-outlined">delete</span></button>
+        }
       </div>
     </div>
   )

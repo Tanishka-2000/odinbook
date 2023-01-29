@@ -9,12 +9,12 @@
 
 @media (width < 1024px) {
   .main {
-    padding-top: 130px;
+    padding: 160px 10px 0;
   }
 }
 
-@media (width < 360px){
+/* @media (width < 360px){
   .main{
     padding-top: 145px;
   }
-}
+} */

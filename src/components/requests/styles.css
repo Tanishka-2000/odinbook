@@ -8,6 +8,10 @@
   }
 }
 
+.requests .header{
+  margin: 20px 0;
+}
+
 .requests .bold{
   font-size: 1.2rem;
 }
@@ -79,28 +83,29 @@
   font-size: 1rem;
   border: none;
   border-radius: 15px;
+  font-weight: 700;
 }
 
 .requests .recieved .btn-group button.accept{
   /* background-color: lawngreen; */
-  border: 3px solid lawngreen;
-  color: lawngreen;
+  border: 2px solid #BFDB38;
+  color: #BFDB38;
 }
 
 .requests .recieved .btn-group button.accept:hover{
-  background-color: lawngreen;
+  background-color: #BFDB38;
   border: var(--secondary-background-color);
   color: var(--secondary-background-color);
 }
 
 .requests .recieved .btn-group button.decline{
   /* background-color: red; */
-  border: 3px solid red;
-  color: red;
+  border: 2px solid #EB1D36;
+  color: #EB1D36;
 }
 
 .requests .recieved .btn-group button.decline:hover{
-  background-color: red;
+  background-color: #EB1D36;
   border: var(--secondary-background-color);
   color: var(--secondary-background-color);
 }
@@ -121,9 +126,9 @@
 }
 
 .requests .sent .accepted{
-  color: lawngreen;
+  color: #BFDB38;
 };
 
 .requests .sent .declined{
-  color: red;
+  color: #EB1D36;
 };

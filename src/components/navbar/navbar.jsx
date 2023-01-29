@@ -1,51 +1,101 @@
 import './styles.css';
 // import userImage from '../../images/user.jpg';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar(){
 
   const [showSettings, setShowSettings] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const location = useLocation();
+  // console.log(location);
 
   return(
     <nav>
 
       <div className='first'>
         {/* desktop view */}
-        <li className='logo '><Link to='/'><span className='symbol'>B</span></Link></li>
-        {/* <li className='search desktop-view'><span className='material-symbols-outlined search-icon'>search</span><input type='text' placeholder='Search odinbook' /></li> */}
+        <li className='logo '>
+          <Link to='/'><span className='symbol'>B</span></Link>
+        </li>
         {/* mobile view */}
-        <li className='logo-name '><Link to='/'><span className='name'>Odinbook</span></Link></li>
-        <li title='profile' className='mobile-view'><a href='#'><img className='account-img' src={localStorage.getItem('avatar')}/></a></li>
-        <li title='settings' className='mobile-view setting ' onClick={() => setShowSettings(prev => !prev)}>
+        <li className='logo-name '>
+          <Link to='/'><span className='name'>Odinbook</span></Link>
+        </li>
+        <li
+          title='profile'
+          className='mobile-view'
+        >
+          <Link to='/profile'><img className='account-img' src={localStorage.getItem('avatar')}/></Link>
+        </li>
+        <li
+          title='settings'
+          className='mobile-view setting'
+          onClick={() => setShowSettings(prev => !prev)}
+        >
           <span className='material-symbols-outlined round-icon'>apps</span>
           <Dropdown setShowSettings={setShowSettings} showSettings={showSettings}/>
         </li>
       </div>
 
       <div className='middle'>
-        <li title='home' className='active'><a href='#'><span className='material-symbols-outlined icon'>home</span></a></li>
-        <li title='friends'><a href='#'><span className='material-symbols-outlined icon'>group</span></a></li>
-        <li title='write post'><a href='#'><span className='material-symbols-outlined icon'>edit_square</span></a></li>
+        <li
+          title='home'
+          className={location.pathname == '/' ? 'active' : ''}
+        >
+          <Link to ='/'><span className='material-symbols-outlined icon'>home</span></Link>
+        </li>
+
+        <li
+          title='friends'
+          className={location.pathname == '/friends' ? 'active' : ''}
+        >
+          <Link to ='/friends'><span className='material-symbols-outlined icon'>group</span></Link>
+        </li>
+
+        <li
+          title='write post'
+          className={location.pathname == '/write' ? 'active' : ''}
+          >
+          <Link to ='/write'><span className='material-symbols-outlined icon'>edit_square</span></Link>
+        </li>
         {/* add link in mobile view */}
-        <li title='notifications' className='mobile-view notifications' onClick={() => setShowNotifications(prev => !prev)}>
+        <li
+          title='notifications'
+          className={'mobile-view notifications'}
+          onClick={() => setShowNotifications(prev => !prev)}
+        >
           <span className='material-symbols-outlined icon'>notifications</span>
           <Notifications setShowNotifications={setShowNotifications} showNotifications={showNotifications}/>
         </li>
+
       </div>
 
       <div className='last'>
       {/* mobile view */}
-        <li className='search mobile-view'><span className='material-symbols-outlined search-icon'>search</span><input type='text' placeholder='Search odinbook' /></li>
-        <li className='find-friends' title='search friends'><a href='#'>Find Friends</a></li>
+        <li className='requests' title='requests'>
+          <Link to ='/requests'>Requests</Link>
+        </li>
+
+        <li className='find-friends' title='search friends'>
+          <Link to ='/users'>Find Friends</Link>
+        </li>
+
       {/* desktop view  */}
         <li className='desktop-view setting' onClick={() => setShowSettings(prev => !prev)} tabIndex='0'>
           <span className='material-symbols-outlined round-icon'>apps</span>
           <Dropdown setShowSettings={setShowSettings} showSettings={showSettings}/>
         </li>
-        <li title='profile' className='desktop-view'><a href='#'><img className='account-img' src={localStorage.getItem('avatar')}/></a></li>
-        <li title='notifications' className='desktop-view notifications' onClick={() => setShowNotifications(prev => !prev)} tabIndex='0'>
+
+        <li title='profile' className='desktop-view'>
+          <Link to ='/profile'><img className='account-img' src={localStorage.getItem('avatar')}/></Link>
+        </li>
+
+        <li title='notifications'
+          className='desktop-view notifications'
+          onClick={() => setShowNotifications(prev => !prev)}
+          tabIndex='0'
+        >
           <span className='material-symbols-outlined round-icon'>notifications</span>
           <Notifications setShowNotifications={setShowNotifications} showNotifications={showNotifications}/>
         </li>
@@ -61,7 +111,7 @@ function Dropdown({setShowSettings, showSettings}) {
       <div className='header'>
         <h2>Settings</h2>
         <span className="material-symbols-outlined round-icon"
-          onClick={() => setShowSettings(true)} //setting value to true as it will be !true > > false by <li>'s onClick handler
+          onClick={e => {setShowSettings(false); e.stopPropagation()}} 
         >
           close
         </span>
@@ -101,16 +151,16 @@ function Notifications({setShowNotifications, showNotifications}) {
       <div className='header'>
         <h2>Notifications</h2>
         <span className="material-symbols-outlined round-icon" 
-          onClick={() => setShowNotifications(true)} //setting value to true as it will be !true > > false by <li>'s onClick handler
+          onClick={e => {setShowNotifications(false); e.stopPropagation()}} 
         >
           close
         </span>
       </div>
       {msgs.map((msg, i) => {
         switch(msg.type){
-          case 'post_liked' : return <div key={i}>{msg.user.name} has liked your <a href='#'>post</a></div>; break;
-          case 'comment_on_post' : return <div key={i}>{msg.user.name} has commneted on your <a href='#'>post</a></div>; break;
-          case 'post_shared' : return <div key={i}>{msg.user.name} has shared a new <a href='#'>post</a></div>; break;
+          case 'post_liked' : return <div key={i}>{msg.user.name} has liked your <Link to ='#'>post</Link></div>; break;
+          case 'comment_on_post' : return <div key={i}>{msg.user.name} has commneted on your <Link to ='#'>post</Link></div>; break;
+          case 'post_shared' : return <div key={i}>{msg.user.name} has shared Link new <Link to ='#'>post</Link></div>; break;
           case 'unfriend' : return <div key={i}>{msg.user.name} has unfriended removed you.</div>; break;
         }
       })}
