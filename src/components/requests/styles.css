@@ -8,6 +8,14 @@
   }
 }
 
+.requests .bold{
+  font-size: 1.2rem;
+}
+
+.requests .small{
+  font-size: .9rem;
+}
+
 .requests img{
   width: 50px;
   height: 50px;
@@ -25,7 +33,7 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
-  margin: 12px;
+  margin: 12px 0;
   border-radius: 10px;
 }
 
@@ -42,7 +50,27 @@
   gap: 15px;
 }
 
-.requests .btn-group button{
+.requests .switch-btns{
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.requests .switch-btns button{
+  flex-grow: 1;
+  background-color: var(--secondary-background-color);
+  border-radius: 15px;
+  padding: 15px;
+  border: none;
+  font-size: 1rem;
+  color: var(--color);
+}
+
+.requests .switch-btns button:hover{
+  background-color: var(--third-background-color);
+}
+
+.requests .recieved .btn-group button{
   padding: 10px;
   width: 90px;
   /* color: var(--secondary-background-color); */
@@ -53,25 +81,25 @@
   border-radius: 15px;
 }
 
-.requests .btn-group button.accept{
+.requests .recieved .btn-group button.accept{
   /* background-color: lawngreen; */
   border: 3px solid lawngreen;
   color: lawngreen;
 }
 
-.requests .btn-group button.accept:hover{
+.requests .recieved .btn-group button.accept:hover{
   background-color: lawngreen;
   border: var(--secondary-background-color);
   color: var(--secondary-background-color);
 }
 
-.requests .btn-group button.decline{
+.requests .recieved .btn-group button.decline{
   /* background-color: red; */
   border: 3px solid red;
   color: red;
 }
 
-.requests .btn-group button.decline:hover{
+.requests .recieved .btn-group button.decline:hover{
   background-color: red;
   border: var(--secondary-background-color);
   color: var(--secondary-background-color);
