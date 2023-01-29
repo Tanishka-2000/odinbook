@@ -12,7 +12,7 @@
   display: block;
 }
 
-.liked{
+.post .btn-group .liked{
   color: var(--blue);
 }
 
@@ -116,6 +116,10 @@
   align-items: center;
 }
 
+/* .write-comment button:hover{
+  color: var(--blue);
+} */
+
 .comments form{
   padding: 10px;
   background-color: var(--third-background-color);
@@ -144,6 +148,9 @@
   color: var(--secondary-color);
 }
 
+.comments form button .material-symbols-outlined:hover{
+  color: var(--blue);
+}
 /* each commment */
 
 .comment{
