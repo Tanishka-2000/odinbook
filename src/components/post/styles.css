@@ -1,6 +1,6 @@
 .post{
-  min-width: 600px;
-  width: 300px;
+  /* min-width: 600px; */
+  width: 600px;
   background-color: var(--secondary-background-color);
   border-radius: 10px;
   margin: 10px 0;
@@ -16,9 +16,9 @@
   color: var(--blue);
 }
 
-@media (width < 650px){
+@media (width < 620px){
   .post{
-    min-width: 95%;
+    width: 95%;
   }
 }
 

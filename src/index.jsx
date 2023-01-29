@@ -14,6 +14,7 @@ import Home, {homeLoader, savedPostsLoader} from './components/home/home';
 import User, {friendsLoader, usersLoader} from './components/users/users';
 import PostForm from './components/postForm/postForm';
 import Profile, {profileLoader, friendProfileLoader} from './components/profile/profie';
+import Requests from './components/requests/requests';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
         path: 'users/:userId',
         element: <Profile isCurrentUser={false}/>,
         loader: friendProfileLoader
+      },
+      {
+        path: 'requests',
+        element: <Requests />
+
       }
     ],
   },

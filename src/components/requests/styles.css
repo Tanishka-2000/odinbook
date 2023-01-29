@@ -1,0 +1,101 @@
+.requests{
+  width: 600px;
+}
+
+@media (width < 620px){
+  .requests{
+    width: 95%;
+  }
+}
+
+.requests img{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.requests .sent,
+.requests .recieved{
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--secondary-background-color);
+  color: var(--color);
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  margin: 12px;
+  border-radius: 10px;
+}
+
+.requests .name ,
+.requests .name{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.requests .sent .status{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.requests .btn-group button{
+  padding: 10px;
+  width: 90px;
+  /* color: var(--secondary-background-color); */
+  background-color: var(--secondary-background-color);
+  margin: 0 5px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 15px;
+}
+
+.requests .btn-group button.accept{
+  /* background-color: lawngreen; */
+  border: 3px solid lawngreen;
+  color: lawngreen;
+}
+
+.requests .btn-group button.accept:hover{
+  background-color: lawngreen;
+  border: var(--secondary-background-color);
+  color: var(--secondary-background-color);
+}
+
+.requests .btn-group button.decline{
+  /* background-color: red; */
+  border: 3px solid red;
+  color: red;
+}
+
+.requests .btn-group button.decline:hover{
+  background-color: red;
+  border: var(--secondary-background-color);
+  color: var(--secondary-background-color);
+}
+
+.requests .delete{
+  background-color: var(--primary-background-color);
+  border-radius: 50%;
+  padding: 8px;
+  border: none;
+}
+
+.requests .delete:hover{
+  background-color: var(--third-background-color);
+}
+
+.requests .delete .material-symbols-outlined{
+  color: var(--color);
+}
+
+.requests .sent .accepted{
+  color: lawngreen;
+};
+
+.requests .sent .declined{
+  color: red;
+};

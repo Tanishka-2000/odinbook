@@ -9,7 +9,7 @@
 }
 
 
-@media (width < 550px) {
+@media (width < 620px) {
   .profile{
     width: 95%;
     padding: 30px 10px;
@@ -63,7 +63,7 @@
 .profile .name{
   color: var(--color);
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 10px;
 }
 
@@ -93,7 +93,7 @@
 
 .profile .bio{
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 10px 0;
   /* background-color: var(--secondary-background-color); */
 }
@@ -111,6 +111,8 @@
   color: var(--color);
 }
 
-.profile .posts{
-  background-color: var(--primary-background-color);
+.posts{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

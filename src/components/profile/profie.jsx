@@ -34,6 +34,7 @@ export default function Profile({isCurrentUser}){
 
   const data = useLoaderData();
   return(
+    <>
     <div className='profile'>
 
       
@@ -107,16 +108,17 @@ export default function Profile({isCurrentUser}){
             }
           </div>
         </div>
-       
-
       <button className='see-friends-btn'>
         <span className='material-symbols-outlined'>group</span>
         See Friends
       </button>
+       </div>
+
       
       <div className='posts'>
         {data.posts.map(post => <Post key={post._id} post={post}/>)}
       </div>
-   </div>   
+   {/* </div>    */}
+   </>
   )
 }
