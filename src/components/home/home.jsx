@@ -8,33 +8,49 @@ import './styles.css';
 // import Users from '../users/users';
 // import EditProfile from '../editProfileForm/editProfile';
 
-export async function loader(){
-  const token = localStorage.getItem('token');
+export async function homeLoader(){
+  
   const response = await fetch('http://localhost:3000/protected/',{
     method: 'get',
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${localStorage.getItem('token')}`
     }
   });
   if(response.status >= 400) return redirect('/login');
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   return data;
 }
 
-export default function Home(){
+export async function savedPostsLoader(){
+  
+  const response = await fetch('http://localhost:3000/protected/saved-posts',{
+    method: 'get',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+  if(response.status >= 400) return redirect('/login');
+  const data = await response.json();
+  // console.log(data);
+  return data;
+}
+
+export default function Home({saved}){
 
   const posts = useLoaderData();
   return(
     <div className='home'>
-    {/* on cliking add button should display new post form*/}
-      <div className='write'>
-        <span className="material-symbols-outlined add-btn">add</span>
-        <div>
-          <p className='bold'>Create Story</p>
-          <p>Share a photo or write something.</p>
+      {
+        saved ? <h1 className='header'>Saved Posts</h1> :
+        <div className='write'>
+          <span className="material-symbols-outlined add-btn">add</span>
+          <div>
+            <p className='bold'>Create Story</p>
+            <p>Share a photo or write something.</p>
+          </div>
         </div>
-      </div>
+      }
       {posts.map(post => <Post key={post._id} post={post}/>)}
     </div>
   )
