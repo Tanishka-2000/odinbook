@@ -2,14 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 65px;
+  /* padding-top: 65px;
   background-color: var(--primary-background-color);
-  min-height: 100vh;
+  min-height: 100vh; */
 }
 
 .home .write{
   display: flex;
-  width: 600px;
+  /* width: 600px; */
+  width: 100%;
   background-color: var(--secondary-background-color);
   color: var(--color);
   padding: 10px;
@@ -35,23 +36,3 @@
 .home .write .add-btn{
   cursor: pointer;
 }
-
-
-@media (width < 1024px) {
-  .home {
-    padding-top: 130px;
-  }
-
-  .home .write{
-    width: 95%;
-  }
-}
-
-@media (width < 360px){
-  .home{
-    padding-top: 145px;
-  }
-}
-
-
-

@@ -21,6 +21,7 @@ body{
   --third-background-color: #e0e2e5;
   --color: #242526;
   --secondary-color: #777;
+  --blue: #42a5f5;
 }
 
 #root.dark{
@@ -29,4 +30,5 @@ body{
   --third-background-color:#3a3b3c;
   --color: #ccc;
   --secondary-color: #999;  
+  --blue: #42a5f5;
 }

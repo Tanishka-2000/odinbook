@@ -35,7 +35,7 @@ export default function Home(){
           <p>Share a photo or write something.</p>
         </div>
       </div>
-      {posts.map(post => <Post key={post._id} data={post}/>)}
+      {posts.map(post => <Post key={post._id} post={post}/>)}
     </div>
   )
 }

@@ -12,8 +12,8 @@
   position: relative;
 }
 
-.new-post form{
-  
+.new-post .user{
+  width: 100%;
 }
 
 .new-post .heading{

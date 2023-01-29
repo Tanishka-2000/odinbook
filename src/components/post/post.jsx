@@ -5,29 +5,41 @@ import './styles.css';
 // import cat3 from '../../images/cat3.jpg';
 
 
-export default function Post({data}){
+export default function Post({post}){
+
+  const likePost = async () => {
+    const response = await fetch(`http://localhost:3000/protected/posts/${post._id}/like`,{
+      method: 'put',
+      headers: {
+        Authourization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+  }
   return(
     <div className='post'>
       <div className='info'>
         <div className='head'>
-          <div><img className='account-img' src={data.author.image}/></div>
+          <div><img className='account-img' src={post.author.image}/></div>
           <div>
-            <p className='bold'>{data.author.name}</p>
-            <p className='light small'>n{new Date(data.postedAt).toDateString()}</p>
+            <p className='bold'>{post.author.name}</p>
+            <p className='light small'>{new Date(post.postedAt).toDateString()}</p>
           </div>
         </div>  
-        <p className='regular'>{data.message}</p>
+        <p className='regular'>
+          {post.message}
+          <span className='tags'>{post.tags.map(tag => `#${tag}`)}</span>    
+        </p>
       </div>  
      
-      <img src={data.imageUrl}/>
+      <img src={post.imageUrl}/>
 
       <div className='data'>
-        <p>{data.likes} likes</p>
-        <p>{data.comments.length} comments</p>
+        <p>{post.likes} likes</p>
+        {/* <p>{data.comments.length} comments</p> */}
       </div>
 
       <div className='btn-group'>
-        <button><span className='material-symbols-outlined'>thumb_up</span>like</button>
+        <button onClick={likePost}><span className={`material-symbols-outlined ${post.isLiked ? 'liked' : ''}`}>thumb_up</span>like</button>
         <button><span className='material-symbols-outlined'>comment</span>comment</button>
       </div>
 

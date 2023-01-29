@@ -7,6 +7,15 @@
   color: var(--color);
 }
 
+.tags{
+  color: var(--blue);
+  display: block;
+}
+
+.liked{
+  color: var(--blue);
+}
+
 @media (width < 650px){
   .post{
     min-width: 95%;
