@@ -7,13 +7,13 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import Main , {loader as mainLoader} from './components/main/main';
+import Main , {loader, loader as mainLoader} from './components/main/main';
 import Login, {action as loginAction} from './components/login/login';
 import Signup, {action as signupAction} from './components/login/signup';
 import Home, {homeLoader, savedPostsLoader} from './components/home/home';
 import User, {friendsLoader, usersLoader} from './components/users/users';
 import PostForm from './components/postForm/postForm';
-import Profile, {profileLoader} from './components/profile/profie';
+import Profile, {profileLoader, friendProfileLoader} from './components/profile/profie';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -47,8 +47,13 @@ const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        element:<Profile/>,
+        element:<Profile isCurrentUser={true}/>,
         loader: profileLoader
+      },
+      {
+        path: 'users/:userId',
+        element: <Profile isCurrentUser={false}/>,
+        loader: friendProfileLoader
       }
     ],
   },
