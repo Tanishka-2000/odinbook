@@ -8,7 +8,7 @@
 
 @media (width < 650px){
   .edit-profile{
-    min-width: 95%;
+    width: 95%;
   }
 }
 
@@ -22,6 +22,12 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--third-background-color);
+}
+
+.edit-profile button{
+  background-color: transparent;
+  border: none;
+  outline: none;
 }
 
 .edit-profile .header .back:hover{
@@ -44,6 +50,10 @@
   margin: 13px 0;
 }
 
+.edit-profile > div > *:last-child{
+  margin-bottom: 0;
+}
+
 .edit-profile form{
   flex-grow: 1;
 }
@@ -56,6 +66,7 @@
   padding: 10px;
   color: var(--color);
   font-size: .9rem;
+  border-radius: 8px;
 }
 
 .edit-profile input::placeholder{
@@ -68,6 +79,7 @@
 
 .edit-profile li{
   border-bottom: 1px solid var(--third-background-color);
+  padding: 10px 0;
 }
 
 .edit-profile .delete{
