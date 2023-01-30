@@ -175,6 +175,13 @@ nav .setting .dropdown div{
   gap: 8px;
 }
 
+nav .setting .dropdown div a{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 nav .setting .dropdown div:last-child{
   border-bottom: none;
 }

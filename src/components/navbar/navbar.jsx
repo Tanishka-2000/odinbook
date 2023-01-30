@@ -1,7 +1,7 @@
 import './styles.css';
 // import userImage from '../../images/user.jpg';
 import { useState } from 'react';
-import { Form, Link, useLocation } from 'react-router-dom';
+import { Link, redirect, useLocation, useNavigate } from 'react-router-dom';
 
 export default function Navbar(){
 
@@ -128,6 +128,21 @@ export default function Navbar(){
 }
 
 function Dropdown({setShowSettings, showSettings}) {
+  const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
+
+  const changeTheme = () => {
+    document.getElementById('root').className = darkMode ? 'light' : 'dark';
+    setDarkMode(p => !p);
+  }
+
+  const logOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('avatar');
+    localStorage.removeItem('name');
+    navigate('/login');
+  }
+
   return(
     <div className={`dropdown ${showSettings ? 'shown' : ''}`}>
       <div className='header'>
@@ -139,18 +154,20 @@ function Dropdown({setShowSettings, showSettings}) {
         </span>
       </div>
       <div>
-        <span className="material-symbols-outlined round-icon">bookmark_added</span>
-        saved posts
+        <Link to='/saved-posts'>
+          <span className="material-symbols-outlined round-icon">bookmark_added</span>
+          saved posts
+        </Link>
         </div>
       <div>
         <span className="material-symbols-outlined round-icon">key</span>
         change passwords
       </div>
-      <div>
-        <span className="material-symbols-outlined round-icon">dark_mode</span>
-        dark mode
+      <div onClick={changeTheme}>
+        <span className="material-symbols-outlined round-icon"> {darkMode ? 'light_mode' : 'dark_mode'}</span>
+        {darkMode ? 'light mode' : 'dark mode'}
       </div>
-      <div>
+      <div onClick={logOut}>
         <span className="material-symbols-outlined round-icon">logout</span>
         log out
         </div>
@@ -161,7 +178,7 @@ function Dropdown({setShowSettings, showSettings}) {
 function Notifications({setShowNotifications, showNotifications, notifications, loadNotifications}) {
 
   const deleteNotification = async (e, notificationId) => {
-        
+
     e.stopPropagation();
     const response = await fetch(`http://localhost:3000/protected/notifications/${notificationId}`,{
       method: 'delete',
@@ -172,7 +189,7 @@ function Notifications({setShowNotifications, showNotifications, notifications, 
     loadNotifications();
   }
 
-console.log(notifications);
+// console.log(notifications);
   return(
     <div className={`notificatons-list ${showNotifications ? 'shown' : ''}`}>
       <div className='header'>
