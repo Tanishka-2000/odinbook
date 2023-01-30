@@ -36,6 +36,20 @@ export async function savedPostsLoader(){
   return data;
 }
 
+export async function postLoader({params}){
+  
+  const response = await fetch(`http://localhost:3000/protected/posts/${params.postId}`,{
+    method: 'get',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+  if(response.status >= 400) return redirect('/login');
+  const data = await response.json();
+  // console.log(data);
+  return [data];
+}
+
 export default function Home({saved}){
 
   const posts = useLoaderData();

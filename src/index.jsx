@@ -10,7 +10,7 @@ import {
 import Main , {loader, loader as mainLoader} from './components/main/main';
 import Login, {action as loginAction} from './components/login/login';
 import Signup, {action as signupAction} from './components/login/signup';
-import Home, {homeLoader, savedPostsLoader} from './components/home/home';
+import Home, {homeLoader, savedPostsLoader, postLoader} from './components/home/home';
 import User, {friendsLoader, removeFriend ,usersLoader, sendFriendRequest} from './components/users/users';
 import PostForm, {postFormAction} from './components/postForm/postForm';
 import Profile, {profileLoader, friendProfileLoader} from './components/profile/profie';
@@ -50,6 +50,11 @@ const router = createBrowserRouter([
         path: 'saved-posts',
         element:<Home saved={true}/>,
         loader: savedPostsLoader
+      },
+      {
+        path: 'posts/:postId',
+        element: <Home saved={false} />,
+        loader: postLoader
       },
       {
         path: 'profile',
