@@ -54,9 +54,9 @@
   margin-bottom: 0;
 }
 
-.edit-profile form{
+/* .edit-profile form{
   flex-grow: 1;
-}
+} */
 
 .edit-profile input{
   width: 100%;
@@ -82,12 +82,19 @@
   padding: 10px 0;
 }
 
-.edit-profile .delete{
+.edit-profile li  form{
+  /* display: inline; */
   margin-left: auto;
 }
 
+.edit-profile .delete{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
 .edit-profile .delete:hover{
-  background-color: var(--primary-background-color);
+  background-color: var(--third-background-color);
 }
 
 .edit-profile > div > *:last-child{

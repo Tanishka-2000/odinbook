@@ -1,4 +1,4 @@
-import { Form, useLoaderData } from 'react-router-dom';
+import { Form, redirect, useLoaderData } from 'react-router-dom';
 import './styles.css';
 
 export async function loadProfileData(){
@@ -27,6 +27,22 @@ export async function profileAction({request}){
     body: JSON.stringify(data)
   });
   return null;
+}
+
+export async function deleteProfile({request}){
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  delete data['field'];
+  // console.log(data);
+  const response = await fetch(`http://localhost:3000/protected/profile/${formData.get('field')}`,{
+    method: 'delete',
+    headers: {
+      'Content-Type': 'application/JSON',
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    },
+    body: JSON.stringify(data)
+  });
+  return redirect('/edit-profile');
 }
 
 export default function EditProfile(){
@@ -65,7 +81,14 @@ export default function EditProfile(){
           <li key={i}>
             <span className="material-symbols-outlined">business_center</span>
             {experience}
-            <button className='delete'><span className="material-symbols-outlined">delete</span></button>
+            <Form method='post' action='/edit-profile/delete'>
+              <input type='hidden' name='field' value='work-experience' />
+              <button className='delete'
+                name='experience'
+                value={experience}>
+                <span className="material-symbols-outlined">delete</span>
+              </button>
+            </Form>  
           </li>
         )}
         
@@ -93,17 +116,29 @@ export default function EditProfile(){
         <li key={i}>
           <span className="material-symbols-outlined">school</span>
           went to {school}
-          <button className='delete'><span className="material-symbols-outlined">delete</span></button>
+          <Form method='post' action='/edit-profile/delete'>
+            <input type='hidden' name='field' value='high-school' />
+            <button className='delete'
+              name='school'
+              value={school}>
+              <span className="material-symbols-outlined">delete</span>
+            </button>
+          </Form> 
         </li>
       )}
       
       {profile.college.map((school, i) => 
         <li key={i}>
-          {/* <Form method='post'> */}
-            <span className="material-symbols-outlined">school</span>
-            studied at {school}
-            <button className='delete'><span className="material-symbols-outlined">delete</span></button>
-          {/* </Form> */}
+          <span className="material-symbols-outlined">school</span>
+          studied at {school}
+          <Form method='post' action='/edit-profile/delete'>
+            <input type='hidden' name='field' value='college' />
+            <button className='delete'
+              name='college'
+              value={school}>
+              <span className="material-symbols-outlined">delete</span>
+            </button>
+          </Form>          
         </li>
       )}
 
@@ -160,7 +195,14 @@ export default function EditProfile(){
           <li key={i}>
             <span className="material-symbols-outlined">mail</span>
             {em}
-            <button className='delete'><span className="material-symbols-outlined">delete</span></button>
+            <Form method='post' action='/edit-profile/delete'>
+              <input type='hidden' name='field' value='email' />
+              <button className='delete'
+                name='email'
+                value={em}>
+                <span className="material-symbols-outlined">delete</span>
+              </button>
+            </Form>
           </li>
         )}
 
@@ -168,7 +210,14 @@ export default function EditProfile(){
           <li key={i}>
             <span className="material-symbols-outlined">call</span>
             {ph}
-            <button className='delete'><span className="material-symbols-outlined">delete</span></button>
+            <Form method='post' action='/edit-profile/delete'>
+              <input type='hidden' name='field' value='phone' />
+              <button className='delete'
+                name='phone'
+                value={ph}>
+                <span className="material-symbols-outlined">delete</span>
+              </button>
+            </Form>
           </li>
         )}
 

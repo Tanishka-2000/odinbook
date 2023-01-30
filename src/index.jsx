@@ -14,7 +14,7 @@ import Home, {homeLoader, savedPostsLoader} from './components/home/home';
 import User, {friendsLoader, removeFriend ,usersLoader, sendFriendRequest} from './components/users/users';
 import PostForm, {postFormAction} from './components/postForm/postForm';
 import Profile, {profileLoader, friendProfileLoader} from './components/profile/profie';
-import EditProfile, { loadProfileData , profileAction} from './components/editProfileForm/editProfile';
+import EditProfile, { deleteProfile, loadProfileData , profileAction} from './components/editProfileForm/editProfile';
 import Requests, {requestsLoader, deleteRequest} from './components/requests/requests';
 import ChangePasswordForm, {changePasswordAction} from './components/changePassword/changePasswordForm';
 import './index.css';
@@ -60,7 +60,14 @@ const router = createBrowserRouter([
         path: 'edit-profile',
         element: <EditProfile />,
         loader: loadProfileData,
-        action: profileAction
+        action: profileAction,
+        children: [
+          {
+            path: 'delete',
+            element: null,
+            action: deleteProfile
+          }
+        ]
       },
       {
         path: 'users/:userId',
