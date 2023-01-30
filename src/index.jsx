@@ -15,6 +15,7 @@ import User, {friendsLoader, removeFriend ,usersLoader, sendFriendRequest} from 
 import PostForm, {postFormAction} from './components/postForm/postForm';
 import Profile, {profileLoader, friendProfileLoader} from './components/profile/profie';
 import Requests, {requestsLoader, deleteRequest} from './components/requests/requests';
+import ChangePasswordForm, {changePasswordAction} from './components/changePassword/changePasswordForm';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -64,6 +65,11 @@ const router = createBrowserRouter([
         element: <Requests />,
         loader: requestsLoader,
         action: deleteRequest
+      },
+      {
+        path: 'change-password',
+        element: <ChangePasswordForm />,
+        action: changePasswordAction
       }
     ],
   },

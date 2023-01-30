@@ -1,0 +1,63 @@
+.changePassword{
+  width: 600px;
+}
+
+@media (width < 640px){
+  .changePassword{
+    width: 100%;
+  }
+}
+
+.changePassword h1{
+  margin: 20px 0;
+  color: var(--color);
+}
+
+.changePassword form div{
+  position: relative;
+}
+
+.changePassword form .visibility-btn{
+  padding: 0;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-color: transparent;
+  color: #999;
+  top: 15px;
+  right: 10px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+}
+.changePassword form .visibility-btn:hover{
+  background-color: var(--primary-background-color);
+}
+
+.changePassword form input{
+  width: 100%;
+  margin: 10px 0;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 7px;
+  border: 1px solid #ddd;
+  outline: none;
+  color: var(--color);
+  caret-color: var(--color);
+  background-color: var(--secondary-background-color);
+}
+
+.changePassword form button{
+  padding: 10px;
+  margin: 10px 0;
+  background-color: var(--secondary-background-color);
+  color: var(--color);
+  font-size: 1rem;
+  border: none;
+  border-radius: 7px;
+}
+
+.changePassword form button:hover{
+  background-color: var(--third-background-color);
+}

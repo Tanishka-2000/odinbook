@@ -239,6 +239,7 @@ nav .notificatons-list > div{
 
 nav .notificatons-list  div  button{
   background-color: var(--primary-background-color);
+  color: var(--color);
   border: none;
   border-radius: 50%;
   padding: 5px;

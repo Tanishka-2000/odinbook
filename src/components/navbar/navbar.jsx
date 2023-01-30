@@ -145,6 +145,7 @@ function Dropdown({setShowSettings, showSettings}) {
 
   return(
     <div className={`dropdown ${showSettings ? 'shown' : ''}`}>
+
       <div className='header'>
         <h2>Settings</h2>
         <span className="material-symbols-outlined round-icon"
@@ -153,24 +154,31 @@ function Dropdown({setShowSettings, showSettings}) {
           close
         </span>
       </div>
+
       <div>
         <Link to='/saved-posts'>
           <span className="material-symbols-outlined round-icon">bookmark_added</span>
           saved posts
         </Link>
-        </div>
-      <div>
-        <span className="material-symbols-outlined round-icon">key</span>
-        change passwords
       </div>
+
+      <div>
+        <Link to='/change-password'>
+          <span className="material-symbols-outlined round-icon">key</span>
+          change password
+        </Link>
+      </div>
+
       <div onClick={changeTheme}>
         <span className="material-symbols-outlined round-icon"> {darkMode ? 'light_mode' : 'dark_mode'}</span>
         {darkMode ? 'light mode' : 'dark mode'}
       </div>
+
       <div onClick={logOut}>
         <span className="material-symbols-outlined round-icon">logout</span>
         log out
-        </div>
+      </div>
+
     </div>
   )
 }
