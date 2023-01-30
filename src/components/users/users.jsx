@@ -1,6 +1,7 @@
 import './styles.css';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, Form } from 'react-router-dom';
 
+// loader function for user's friends
 export async function friendsLoader(){
   const response = await fetch('http://localhost:3000/protected/friends',{
     method: 'get',
@@ -9,10 +10,10 @@ export async function friendsLoader(){
     }
   });
   const data = await response.json();
-
   return data;
 }
 
+// loader function for users not friend of users
 export async function usersLoader(){
   const response = await fetch('http://localhost:3000/protected/users',{
     method: 'get',
@@ -21,10 +22,24 @@ export async function usersLoader(){
     }
   });
   const data = await response.json();
-
   return data;
 }
 
+// action function for unfriend a user
+export async function removeFriend({request}){
+  const formData = await request.formData();;
+  // console.log(formData.get('friendId'));
+  const response = await fetch(`http://localhost:3000/protected/users/${formData.get('friendId')}/unfriend`,{
+    method: 'post',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+  // const data = await response.json();
+  return null;
+}
+
+// react component
 export default function Users({friendList}){
   
   const users = useLoaderData();
@@ -42,7 +57,16 @@ function User({friendList, user}){
     <div className='user'>
       <img className='account-img' src={user.image}/>  
       <p>{user.name}</p>
-      <button title={`${friendList ? 'remove from':'add to'} friends list`}>{friendList ? 'unfriend' : 'add friend'}</button>
+      <Form method='post'>
+        <button
+          title={`${friendList ? 'remove from':'add to'} friends list`}
+          type='submit'
+          name='friendId'
+          value={user._id}
+        >
+          {friendList ? 'unfriend' : 'add friend'}
+        </button>
+      </Form>
     </div>
   )
 }

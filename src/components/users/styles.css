@@ -31,8 +31,12 @@
     width: 100%;
   }
 }
-.user button{
+
+.user form{
   margin-left: auto;
+}
+
+.user button{
   background-color: var(--color);
   color: var(--primary-background-color);
   padding: 7px 10px;
