@@ -226,19 +226,35 @@ nav .notifications .notificatons-list.shown{
 nav .notificatons-list > div{
   padding: 15px;
   border-bottom: 1px solid #ccc;
+  display: flex;
+  gap: 10px;
 }
 
+nav .notificatons-list  div  button{
+  background-color: var(--primary-background-color);
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+nav .notificatons-list  div  button span{
+transition: transform 100ms ease;
+}
+
+nav .notificatons-list  div  button:hover span{
+  transform: scale(1.1);
+}
 
 nav .notificatons-list > div:not(.header):hover{
   background-color: var(--third-background-color);
 }
 
-nav .notificatons-list > div > a{
+nav .notificatons-list  div  a{
   display: inline-block;
   font-weight:700;
 }
 
-nav .notificatons-list > div > a:hover{
+nav .notificatons-list  div  a:hover{
   text-decoration: underline;
 }
 

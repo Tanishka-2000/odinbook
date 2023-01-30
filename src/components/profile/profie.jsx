@@ -13,7 +13,7 @@ export async function profileLoader(){
   });
   if(response.status >= 400) return redirect('/login');
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   return data;
 }
 
@@ -26,7 +26,7 @@ export async function friendProfileLoader({params}){
   });
   if(response.status >= 400) return redirect('/login');
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   return data;
 }
 

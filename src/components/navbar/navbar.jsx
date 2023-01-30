@@ -1,14 +1,26 @@
 import './styles.css';
 // import userImage from '../../images/user.jpg';
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Form, Link, useLocation } from 'react-router-dom';
 
 export default function Navbar(){
 
   const [showSettings, setShowSettings] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [notifications, setNotifications] = useState([]);
   const location = useLocation();
   // console.log(location);
+  const loadNotifications = async () => {
+    const response = await fetch('http://localhost:3000/protected/notifications',{
+      method: 'get',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    const data = await response.json();
+    setNotifications(data);
+    setShowNotifications(true);
+  }
 
   return(
     <nav>
@@ -66,7 +78,12 @@ export default function Navbar(){
           onClick={() => setShowNotifications(prev => !prev)}
         >
           <span className='material-symbols-outlined icon'>notifications</span>
-          <Notifications setShowNotifications={setShowNotifications} showNotifications={showNotifications}/>
+          <Notifications
+            setShowNotifications={setShowNotifications}
+            showNotifications={showNotifications}
+            notifications={notifications}
+            loadNotifications={loadNotifications}           
+          />
         </li>
 
       </div>
@@ -93,11 +110,16 @@ export default function Navbar(){
 
         <li title='notifications'
           className='desktop-view notifications'
-          onClick={() => setShowNotifications(prev => !prev)}
+          onClick={() => showNotifications ? setShowNotifications(false): loadNotifications()}
           tabIndex='0'
         >
           <span className='material-symbols-outlined round-icon'>notifications</span>
-          <Notifications setShowNotifications={setShowNotifications} showNotifications={showNotifications}/>
+          <Notifications
+            setShowNotifications={setShowNotifications}
+            showNotifications={showNotifications}
+            notifications={notifications}
+            loadNotifications={loadNotifications}           
+          />
         </li>
       </div>
 
@@ -136,16 +158,21 @@ function Dropdown({setShowSettings, showSettings}) {
   )
 }
 
-function Notifications({setShowNotifications, showNotifications}) {
-  // type: post liked / commented on post / post shared / unfriend
-  // populate userId with name and img;
-  let msgs = [
-    {type: 'post_liked', user: {name:'John'}, postId:6},
-    {type: 'comment_on_post', user: {name:'Sarah'}, postId:7},
-    {type: 'post_shared', user: {name:'Heather'} , postId:8},
-    {type: 'unfriend', user: {name:'Alex'}, postId:null}
-  ];
+function Notifications({setShowNotifications, showNotifications, notifications, loadNotifications}) {
 
+  const deleteNotification = async (e, notificationId) => {
+        
+    e.stopPropagation();
+    const response = await fetch(`http://localhost:3000/protected/notifications/${notificationId}`,{
+      method: 'delete',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    loadNotifications();
+  }
+
+console.log(notifications);
   return(
     <div className={`notificatons-list ${showNotifications ? 'shown' : ''}`}>
       <div className='header'>
@@ -156,12 +183,36 @@ function Notifications({setShowNotifications, showNotifications}) {
           close
         </span>
       </div>
-      {msgs.map((msg, i) => {
-        switch(msg.type){
-          case 'post_liked' : return <div key={i}>{msg.user.name} has liked your <Link to ='#'>post</Link></div>; break;
-          case 'comment_on_post' : return <div key={i}>{msg.user.name} has commneted on your <Link to ='#'>post</Link></div>; break;
-          case 'post_shared' : return <div key={i}>{msg.user.name} has shared Link new <Link to ='#'>post</Link></div>; break;
-          case 'unfriend' : return <div key={i}>{msg.user.name} has unfriended removed you.</div>; break;
+          {/* case 'post_liked' : return <div key={notification._id}>{notification.userId.name} has liked your <Link to ={`/posts/${notification.postId}`}>post</Link></div>; break; */}
+      {notifications.map((notification, i) => {
+        switch(notification.domain){
+          case 'commented on post' : 
+            return (
+              <div key={notification._id}>
+                  <p>{notification.userId.name} has commneted on your <Link to ={`/posts/${notification.postId}`}>post</Link></p>               
+                  <button onClick={e => deleteNotification(e,notification._id)}>
+                    <span className="material-symbols-outlined">delete</span>
+                  </button>
+              </div>
+            );
+          case 'post shared' : 
+            return (
+              <div key={notification._id}>
+                <p>{notification.userId.name} has shared Link new <Link to ={`/posts/${notification.postId}`}>post</Link></p>
+                <button onClick={e => deleteNotification(e,notification._id)}>
+                  <span className="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            );
+          case 'unfriend' : 
+            return (
+              <div key={notification._id}>
+                <p>{notification.userId.name} has unfriended removed you.</p>
+                <button onClick={e => deleteNotification(e,notification._id)}>
+                  <span className="material-symbols-outlined">delete</span>
+                </button>
+              </div>
+            );
         }
       })}
     </div>

@@ -80,7 +80,7 @@ function Comments({comments, loadComments, postId}){
 
   const shareComment = async (e) => {
     e.preventDefault();
-    console.log(message);
+    // console.log(message);
     const response = await fetch(`http://localhost:3000/protected/posts/${postId}/comments`,{
       method: 'post',
       headers: {
@@ -104,7 +104,7 @@ function Comments({comments, loadComments, postId}){
       </div>
 
       {comments.length > 0 ?
-      comments.map(comment => <Comment comment={comment} />)
+      comments.map(comment => <Comment key={comment._id} comment={comment} />)
       :
       'No comments on this post...'}
     </div>  
