@@ -25,6 +25,7 @@ export async function action({request}){
 
   localStorage.setItem('token', data.token);
   localStorage.setItem('avatar', data.image);
+  localStorage.setItem('name', data.name);
   // console.log(data);
   return redirect('/');
 }

@@ -12,7 +12,7 @@ import Login, {action as loginAction} from './components/login/login';
 import Signup, {action as signupAction} from './components/login/signup';
 import Home, {homeLoader, savedPostsLoader} from './components/home/home';
 import User, {friendsLoader, usersLoader} from './components/users/users';
-import PostForm from './components/postForm/postForm';
+import PostForm, {postFormAction} from './components/postForm/postForm';
 import Profile, {profileLoader, friendProfileLoader} from './components/profile/profie';
 import Requests, {requestsLoader} from './components/requests/requests';
 import './index.css';
@@ -34,7 +34,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'write',
-        element:<PostForm />
+        element:<PostForm />,
+        action: postFormAction
       },
       {
         path: 'users',

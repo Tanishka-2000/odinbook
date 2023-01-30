@@ -1,4 +1,23 @@
+import { Form, redirect } from 'react-router-dom';
 import './styles.css';
+
+
+export async function postFormAction({request}){
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  console.log(data);
+  let response = await fetch('http://localhost:3000/protected/posts',{
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/JSON',
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    },
+    body: JSON.stringify(data)
+  });
+  // somethings wrong
+  if(response.status >= 400) return null;
+  return redirect('/');
+}
 
 export default function PostForm(){
   return(
@@ -7,15 +26,15 @@ export default function PostForm(){
         <p className='heading'>Create Post</p>
         <span className="material-symbols-outlined close-btn" aria-label='close button'>close</span>
         <div className='user'>
-          <span className='material-symbols-outlined'>person</span>
-          <p className='bold'>Snow White</p>
+          <img src={localStorage.getItem('avatar')} />
+          <p className='bold'>{localStorage.getItem('name')} Snow White</p>
         </div>
-        <form>
-          <textarea rows='4' aria-label='write your message here' placeholder="What's on your mind, Snow White ?"></textarea>
-          <input type='text' aria-label='Image URL' placeholder='add image url'/>
-          <input  type='text' aria-label='tags' placeholder='add tags'/>
+        <Form method='post'>
+          <textarea rows='4' name='message' aria-label='write your message here' placeholder={`What's on your mind, ${localStorage.getItem('name')} ?`}></textarea>
+          <input type='text' name='imageUrl' aria-label='Image URL' placeholder='add image url'/>
+          <input  type='text' name='tags' aria-label='tags' placeholder='add tags'/>
           <button>Post</button>
-        </form>
+        </Form>
       {/* </div> */}
     </div>  
   )
