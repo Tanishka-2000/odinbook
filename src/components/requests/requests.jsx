@@ -1,5 +1,5 @@
 import './styles.css';
-import {redirect, useLoaderData} from 'react-router-dom';
+import {Form, redirect, useLoaderData} from 'react-router-dom';
 import { useState } from 'react';
 
 export async function requestsLoader(){
@@ -18,6 +18,36 @@ export async function requestsLoader(){
     else recieved = [...recieved, request];
   });
   return {sent, recieved};
+}
+
+export async function deleteRequest({request}){
+  const formData = await request.formData();
+  
+  if(formData.get('actionType') == 'delete'){
+    const response = await fetch(`http://localhost:3000/protected/requests/${formData.get('requestId')}`,{
+      method: 'delete',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+  }else{
+    const answer = formData.get('actionType');
+    const response = await fetch(`http://localhost:3000/protected/requests/${formData.get('requestId')}`,{
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/JSON',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify({answer})
+    });
+    console.log(response);
+  }
+  
+  // if(response.status >= 400){
+  //   const data = await response.json();
+  //   // alert(data.msg)
+  // }
+  return null;
 }
 
 export default function Requests(){
@@ -59,12 +89,22 @@ function SentRequest({request}){
       </div>
       
       <div className='status'>
-        <p className=''>...{request.status}</p>
+        <p className={request.status}>...{request.status}</p>
         {
           request.status === 'pending' ? 
           ''
           :
-          <button className='delete'><span className="material-symbols-outlined">delete</span></button>
+          <Form method='post'>
+            <input type='hidden' name='requestId' value={request._id} />
+            <button
+              className='delete'
+              type='submit'
+              name='actionType'
+              value='delete'
+            >
+              <span className="material-symbols-outlined">delete</span>
+            </button>
+          </Form>
         }
       </div>
     </div>
@@ -83,8 +123,26 @@ function RecivedRequest({request}){
         </p>
       </div>
       <div className='btn-group'>
-        <button className='accept'>accept</button>
-        <button className='decline'>decline</button>
+        <Form method='post'>
+          <input type='hidden' name='requestId' value={request._id} />
+          <button
+            className='accept'
+            type='submit'
+            name='actionType'
+            value='accepted'
+          >
+            accept
+          </button>
+
+          <button
+            className='decline'
+            type='submit'
+            name='actionType'
+            value='declined'
+          >
+            decline
+          </button>
+        </Form>
       </div>
     </div>
   )

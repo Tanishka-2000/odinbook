@@ -126,9 +126,13 @@
 }
 
 .requests .sent .accepted{
-  color: #BFDB38;
-};
+  color: #54B435;
+  font-size: 1.3rem;
+  font-weight: 700; 
+}
 
 .requests .sent .declined{
   color: #EB1D36;
-};
+  font-size: 1.3rem;
+  font-weight: 700; 
+}

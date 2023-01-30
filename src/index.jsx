@@ -14,7 +14,7 @@ import Home, {homeLoader, savedPostsLoader} from './components/home/home';
 import User, {friendsLoader, removeFriend ,usersLoader, sendFriendRequest} from './components/users/users';
 import PostForm, {postFormAction} from './components/postForm/postForm';
 import Profile, {profileLoader, friendProfileLoader} from './components/profile/profie';
-import Requests, {requestsLoader} from './components/requests/requests';
+import Requests, {requestsLoader, deleteRequest} from './components/requests/requests';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -62,7 +62,8 @@ const router = createBrowserRouter([
       {
         path: 'requests',
         element: <Requests />,
-        loader: requestsLoader
+        loader: requestsLoader,
+        action: deleteRequest
       }
     ],
   },
