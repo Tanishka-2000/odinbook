@@ -11,7 +11,7 @@ import Main , {loader, loader as mainLoader} from './components/main/main';
 import Login, {action as loginAction} from './components/login/login';
 import Signup, {action as signupAction} from './components/login/signup';
 import Home, {homeLoader, savedPostsLoader} from './components/home/home';
-import User, {friendsLoader, removeFriend ,usersLoader} from './components/users/users';
+import User, {friendsLoader, removeFriend ,usersLoader, sendFriendRequest} from './components/users/users';
 import PostForm, {postFormAction} from './components/postForm/postForm';
 import Profile, {profileLoader, friendProfileLoader} from './components/profile/profie';
 import Requests, {requestsLoader} from './components/requests/requests';
@@ -41,7 +41,8 @@ const router = createBrowserRouter([
       {
         path: 'users',
         element:<User friendList={false} />,
-        loader: usersLoader
+        loader: usersLoader,
+        action: sendFriendRequest
       },
       {
         path: 'saved-posts',

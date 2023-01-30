@@ -1,5 +1,5 @@
 import './styles.css';
-import { useLoaderData, Form } from 'react-router-dom';
+import { useLoaderData, Form, redirect } from 'react-router-dom';
 
 // loader function for user's friends
 export async function friendsLoader(){
@@ -27,16 +27,26 @@ export async function usersLoader(){
 
 // action function for unfriend a user
 export async function removeFriend({request}){
-  const formData = await request.formData();;
-  // console.log(formData.get('friendId'));
+  const formData = await request.formData();
   const response = await fetch(`http://localhost:3000/protected/users/${formData.get('friendId')}/unfriend`,{
     method: 'post',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
     }
   });
-  // const data = await response.json();
   return null;
+}
+
+// action function for sending a friend request
+export async function sendFriendRequest({request}){
+  const formData = await request.formData();
+  const response = await fetch(`http://localhost:3000/protected/users/${formData.get('friendId')}/friendRequest `,{
+    method: 'post',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+  return redirect('/requests');
 }
 
 // react component
