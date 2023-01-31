@@ -17,6 +17,7 @@ import Profile, {profileLoader, friendProfileLoader} from './components/profile/
 import EditProfile, { deleteProfile, loadProfileData , profileAction} from './components/editProfileForm/editProfile';
 import Requests, {requestsLoader, deleteRequest} from './components/requests/requests';
 import ChangePasswordForm, {changePasswordAction} from './components/changePassword/changePasswordForm';
+import ErrorPage from './components/errorPage/errorPage';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <Main />,
     loader: mainLoader,
+    errorElement: <ErrorPage />,
     children: [
       { index: true,
         element: <Home saved={false}/>,

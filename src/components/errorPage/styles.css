@@ -1,0 +1,32 @@
+.errorPage{
+  width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--color);
+}
+
+@media (width < 600px) {
+  .errorPage{
+    width: 100%;
+  }
+}
+
+.errorPage img{
+  width: 100%;
+}
+
+.errorPage a{
+  color: #222;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: var(--color);
+}
+.errorPage a:hover{
+  box-shadow: 0 0 5px 4px #ccc;
+}

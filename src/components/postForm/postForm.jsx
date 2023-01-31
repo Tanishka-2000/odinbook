@@ -46,7 +46,7 @@ export default function PostForm(){
 
         <div className='user'>
           <img src={localStorage.getItem('avatar')} />
-          <p className='bold'>{localStorage.getItem('name')} Snow White</p>
+          <p className='bold'>{localStorage.getItem('name')}</p>
         </div>
 
         <Form method='post'>
