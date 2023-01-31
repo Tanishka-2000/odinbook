@@ -50,6 +50,21 @@ export async function postLoader({params}){
   return [data];
 }
 
+// export async function savePost({request}){
+//   const formData = await request.formData();
+//   console.log(formData.get('postId'));
+//   const response = await fetch('http://localhost/protected/saved-posts',{
+//     method: 'put',
+//     headers: {
+//       'Content-Type': 'application/JSON',
+//       Authorization: `Bearer ${localStorage.getItem('token')}`
+//     },
+//     body: JSON.stringify({postId: formData.get('postId')})
+//   });
+//   console.log(response);
+//   return null;
+// }
+
 export default function Home({saved}){
 
   const posts = useLoaderData();
@@ -67,7 +82,7 @@ export default function Home({saved}){
           </div>
         </div>
       }
-      {posts.map(post => <Post key={post._id} post={post}/>)}
+      {posts.map(post => <Post key={post._id} post={post} saved={saved}/>)}
     </div>
   )
 }

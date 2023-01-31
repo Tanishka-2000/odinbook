@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: 'saved-posts',
         element:<Home saved={true}/>,
-        loader: savedPostsLoader
+        loader: savedPostsLoader,
       },
       {
         path: 'posts/:postId',

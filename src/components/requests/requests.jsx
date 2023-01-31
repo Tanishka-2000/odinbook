@@ -1,5 +1,5 @@
 import './styles.css';
-import {Form, redirect, useLoaderData} from 'react-router-dom';
+import {Form, redirect, useLoaderData, Link} from 'react-router-dom';
 import { useState } from 'react';
 
 export async function requestsLoader(){
@@ -81,8 +81,8 @@ function SentRequest({request}){
     <div className='sent'>
       <div className='name'>
         <img src={request.userId.image}/>
-        <p>
-          <span className='bold'>{request.userId.name}</span>
+        <p className='name'>
+          <Link to={`/users/${request.userId._id}`}><span className='bold'>{request.userId.name}</span></Link>
           <br/>
           <span className='small'>{new Date(request.date).toDateString()}</span>
         </p>
@@ -116,8 +116,8 @@ function RecivedRequest({request}){
     <div className='recieved'>
       <div className='name'>
         <img src={request.userId.image}/>
-        <p>
-          <span className='bold'>{request.userId.name}</span>
+        <p className='name'>
+          <Link to={`/users/${request.userId._id}`}><span className='bold'>{request.userId.name}</span></Link>
           <br/>
           <span className='small'>{new Date(request.date).toDateString()}</span>
         </p>

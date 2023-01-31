@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Form, redirect } from 'react-router-dom';
+import { Form, Link, redirect, useFetcher } from 'react-router-dom';
 import './styles.css';
 
-export default function Post({post}){
+export default function Post({post, saved}){
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
+  // const fetcher = useFetcher();
 
   const loadComments = async () => {
 
@@ -30,13 +31,31 @@ export default function Post({post}){
       }
     });
   }
+
+  const savePost = async (e) => {
+    const response = fetch('http://localhost:3000/protected/saved-posts',{
+      method: 'put',
+      headers: {
+          'Content-Type': 'application/JSON',
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({postId: post._id})
+    });
+    e.target.classList.add('pressed');
+    setTimeout(() => {
+      e.target.classList.remove('pressed');
+    },300)
+  }
+
   return(
     <div className='post'>
       <div className='info'>
         <div className='head'>
-          <div><img className='account-img' src={post.author.image}/></div>
           <div>
-            <p className='bold'>{post.author.name}</p>
+            <img className='account-img' src={post.author.image}/>
+          </div>
+          <div>
+            <p className='bold name'><Link to={`/users/${post.author._id}`}>{post.author.name}</Link></p>
             <p className='light small'>{new Date(post.postedAt).toDateString()}</p>
           </div>
         </div>  
@@ -46,7 +65,15 @@ export default function Post({post}){
         </p>
       </div>  
      
-      <img src={post.imageUrl}/>
+      <div className='image-container'>
+        <img src={post.imageUrl}/>
+        {saved ? '' : 
+        <button className='save-post' aria-label='save post' onClick={e => savePost(e)}>
+          {/* <span className="material-symbols-outlined">bookmark</span> */}
+          +
+        </button>
+        }
+      </div>
 
       <div className='data'>
         <p>{post.likes} likes</p>
@@ -116,8 +143,8 @@ function Comment ({comment}){
     <div className='comment'>
       <div><img className='account-img' src={comment.author.image}/></div>
       <div className='msg'>       
-        <p className='bold title'>
-          {comment.author.name} <br/>
+        <p className='bold title name'>
+          <Link to={`/users/${comment.author._id}`}>{comment.author.name} </Link><br/>
           <span className='light small'>{new Date(comment.postedAt).toDateString()}</span>
         </p>       
         <p>{comment.message}</p>

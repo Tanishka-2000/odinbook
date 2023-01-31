@@ -26,6 +26,11 @@
   margin: 20px 0;
 }
 
+.user .name a{
+  text-decoration: none;
+  color: var(--color);
+}
+
 @media (width < 620px){
   .users{
     width: 100%;

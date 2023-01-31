@@ -1,5 +1,5 @@
 import './styles.css';
-import { useLoaderData, Form, redirect } from 'react-router-dom';
+import { useLoaderData, Form, redirect, Link } from 'react-router-dom';
 
 // loader function for user's friends
 export async function friendsLoader(){
@@ -66,7 +66,7 @@ function User({friendList, user}){
   return(
     <div className='user'>
       <img className='account-img' src={user.image}/>  
-      <p>{user.name}</p>
+      <p className='name'><Link to={user._id}>{user.name}</Link></p>
       <Form method='post'>
         <button
           title={`${friendList ? 'remove from':'add to'} friends list`}

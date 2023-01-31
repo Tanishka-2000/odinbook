@@ -45,6 +45,11 @@
   padding: 10px;
 }
 
+.name a{
+  text-decoration: none;
+  color: var(--color);
+}
+
 .post .account-circle{
   width: 40px;
   height: 40px;
@@ -61,6 +66,43 @@
 
 .post img{
   width: 100%;
+}
+
+.post .image-container{
+  position: relative;
+}
+
+.post button.save-post{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--primary-background-color);
+  color: var(--color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  font-size: 3rem;
+  font-weight: 100;
+  display: grid;
+  place-content: center;
+}
+
+.pressed{
+  animation: btn-pressed 500ms;
+}
+
+@keyframes btn-pressed {
+  from {
+    transform: translate(-3px, 3px) scale(.8);
+  }
+  to{
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.post .save-post:hover{
+  background-color: var(--third-background-color);
 }
 
 .post .data{
@@ -161,6 +203,11 @@
 .comment .title{
   margin-bottom: 10px;
 }
+
+/* .comment .title a{
+  text-decoration: none;
+  color: var(--color);
+} */
 
 .comment .msg{
   background-color: var(--third-background-color);
