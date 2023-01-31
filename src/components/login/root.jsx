@@ -26,11 +26,7 @@ export default function Root(){
 
 // const responseFacebook = response => console.log(response);
 
-{/* <FacebookLogin
-        appId="1199609287615763"
-        autoLoad={true}
-        fields="name,email,picture"    
-        callback={responseFacebook} />  */}
+ 
 
         // { login ? 
           // <div className='login-form'>

@@ -30,6 +30,29 @@ export async function action({request}){
   return redirect('/');
 }
 
+
+export async function loginGuestUser({request}){
+  const formData = await request.formData();
+  const credentials = Object.fromEntries(formData);
+  console.log(credentials);
+  const response = await fetch('http://localhost:3000/api/login', {
+    method: 'post',
+    headers:{
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    body: JSON.stringify(credentials)
+  });
+
+  const data = await response.json();
+
+  localStorage.setItem('token', data.token);
+  localStorage.setItem('avatar', data.image);
+  localStorage.setItem('name', data.name);
+  
+  return redirect('/');
+}
+
+
 export default function Login(){
   const [showPassword, setShowPassword] = useState(false);
   const data = useActionData();
@@ -54,10 +77,22 @@ export default function Login(){
           {data ? data.err.password ? <p className='error'>{data.err.password}</p> : '' : ''}     
           
           <button type='submit' className='login-btn'>Log in</button>
-        
+
         </Form>
+
+        <Form method='post' action='/guest-login'>
+          <input type='hidden' name='email' value='Camille60@gmail.com'/>
+          <input type='hidden' name='password' value='Camille' />
+          <button className='guest-user-btn'>Log In As Guest User</button>
+        </Form>
+        
         <Link to='/signup'><button className='signup-btn'>Create New Account</button></Link>    
       </div>
     </div>  
   )
 }
+{/* <FacebookLogin
+          appId="1199609287615763"
+          autoLoad={true}
+          fields="name,email,picture"    
+          callback={responseFacebook} /> */}

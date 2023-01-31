@@ -127,7 +127,12 @@ p.error{
   color: #666;
 }
 
-.kep-login-facebook.metro {
+.login-page .guest-user-btn{
+  background-color: #F99417;
+  color: white;
+}
+
+/* .kep-login-facebook.metro {
   border-radius: 5px;
   font-size: .75rem;
-}
+} */

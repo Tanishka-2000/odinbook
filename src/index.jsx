@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 import Main , {loader, loader as mainLoader} from './components/main/main';
-import Login, {action as loginAction} from './components/login/login';
+import Login, {action as loginAction, loginGuestUser} from './components/login/login';
 import Signup, {action as signupAction} from './components/login/signup';
 import Home, {homeLoader, savedPostsLoader, postLoader} from './components/home/home';
 import User, {friendsLoader, removeFriend ,usersLoader, sendFriendRequest} from './components/users/users';
@@ -96,6 +96,11 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
     action: loginAction
+  },
+  {
+    path: '/guest-login',
+    element:null,
+    action: loginGuestUser
   },
   {
     path: '/signup',
