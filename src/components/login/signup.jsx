@@ -6,7 +6,7 @@ export async function action({request}){
   const formData = await request.formData();
   const credentials = Object.fromEntries(formData);
 
-  const response = await fetch('http://localhost:3000/api/signup', {
+  const response = await fetch('https://odinbook-api-1dl4.onrender.com/api/signup', {
     method: 'post',
     headers:{
       'Content-type': 'application/json; charset=UTF-8',

@@ -11,7 +11,7 @@ export default function Navbar(){
   const location = useLocation();
   // console.log(location);
   const loadNotifications = async () => {
-    const response = await fetch('http://localhost:3000/protected/notifications',{
+    const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/notifications',{
       method: 'get',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -188,7 +188,7 @@ function Notifications({setShowNotifications, showNotifications, notifications, 
   const deleteNotification = async (e, notificationId) => {
 
     e.stopPropagation();
-    const response = await fetch(`http://localhost:3000/protected/notifications/${notificationId}`,{
+    const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/notifications/${notificationId}`,{
       method: 'delete',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`

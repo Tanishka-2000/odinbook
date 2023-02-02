@@ -3,7 +3,7 @@ import { useLoaderData, Form, redirect, Link } from 'react-router-dom';
 
 // loader function for user's friends
 export async function friendsLoader(){
-  const response = await fetch('http://localhost:3000/protected/friends',{
+  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/friends',{
     method: 'get',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -15,7 +15,7 @@ export async function friendsLoader(){
 
 // loader function for users not friend of users
 export async function usersLoader(){
-  const response = await fetch('http://localhost:3000/protected/users',{
+  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/users',{
     method: 'get',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -28,7 +28,7 @@ export async function usersLoader(){
 // action function for unfriend a user
 export async function removeFriend({request}){
   const formData = await request.formData();
-  const response = await fetch(`http://localhost:3000/protected/users/${formData.get('friendId')}/unfriend`,{
+  const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/users/${formData.get('friendId')}/unfriend`,{
     method: 'post',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -40,7 +40,7 @@ export async function removeFriend({request}){
 // action function for sending a friend request
 export async function sendFriendRequest({request}){
   const formData = await request.formData();
-  const response = await fetch(`http://localhost:3000/protected/users/${formData.get('friendId')}/friendRequest `,{
+  const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/users/${formData.get('friendId')}/friendRequest `,{
     method: 'post',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`

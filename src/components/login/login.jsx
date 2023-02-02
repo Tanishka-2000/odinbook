@@ -5,7 +5,7 @@ export async function action({request}){
   const formData = await request.formData();
   const credentials = Object.fromEntries(formData);
   // console.log(credentials);
-  const response = await fetch('http://localhost:3000/api/login', {
+  const response = await fetch('https://odinbook-api-1dl4.onrender.com/api/login', {
     method: 'post',
     headers:{
       'Content-type': 'application/json; charset=UTF-8',
@@ -35,7 +35,7 @@ export async function loginGuestUser({request}){
   const formData = await request.formData();
   const credentials = Object.fromEntries(formData);
   console.log(credentials);
-  const response = await fetch('http://localhost:3000/api/login', {
+  const response = await fetch('https://odinbook-api-1dl4.onrender.com/api/login', {
     method: 'post',
     headers:{
       'Content-type': 'application/json; charset=UTF-8',
@@ -91,8 +91,3 @@ export default function Login(){
     </div>  
   )
 }
-{/* <FacebookLogin
-          appId="1199609287615763"
-          autoLoad={true}
-          fields="name,email,picture"    
-          callback={responseFacebook} /> */}

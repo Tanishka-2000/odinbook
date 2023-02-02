@@ -10,7 +10,7 @@ export default function Post({post, saved}){
   const loadComments = async () => {
 
     // if(showComments) return setShowComments(false);
-    const response = await fetch(`http://localhost:3000/protected/posts/${post._id}/comments`,{
+    const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/posts/${post._id}/comments`,{
       method: 'get',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -24,7 +24,7 @@ export default function Post({post, saved}){
   }
 
   const likePost = async () => {
-    const response = await fetch(`http://localhost:3000/protected/posts/${post._id}/like`,{
+    const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/posts/${post._id}/like`,{
       method: 'put',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -33,7 +33,7 @@ export default function Post({post, saved}){
   }
 
   const savePost = async (e) => {
-    const response = fetch('http://localhost:3000/protected/saved-posts',{
+    const response = fetch('https://odinbook-api-1dl4.onrender.com/protected/saved-posts',{
       method: 'put',
       headers: {
           'Content-Type': 'application/JSON',
@@ -108,7 +108,7 @@ function Comments({comments, loadComments, postId}){
   const shareComment = async (e) => {
     e.preventDefault();
     // console.log(message);
-    const response = await fetch(`http://localhost:3000/protected/posts/${postId}/comments`,{
+    const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/posts/${postId}/comments`,{
       method: 'post',
       headers: {
         'Content-Type': 'Application/json',

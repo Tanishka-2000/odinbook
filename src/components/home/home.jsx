@@ -10,7 +10,7 @@ import './styles.css';
 
 export async function homeLoader(){
   
-  const response = await fetch('http://localhost:3000/protected/',{
+  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/',{
     method: 'get',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -24,7 +24,7 @@ export async function homeLoader(){
 
 export async function savedPostsLoader(){
   
-  const response = await fetch('http://localhost:3000/protected/saved-posts',{
+  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/saved-posts',{
     method: 'get',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -38,7 +38,7 @@ export async function savedPostsLoader(){
 
 export async function postLoader({params}){
   
-  const response = await fetch(`http://localhost:3000/protected/posts/${params.postId}`,{
+  const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/posts/${params.postId}`,{
     method: 'get',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -49,21 +49,6 @@ export async function postLoader({params}){
   // console.log(data);
   return [data];
 }
-
-// export async function savePost({request}){
-//   const formData = await request.formData();
-//   console.log(formData.get('postId'));
-//   const response = await fetch('http://localhost/protected/saved-posts',{
-//     method: 'put',
-//     headers: {
-//       'Content-Type': 'application/JSON',
-//       Authorization: `Bearer ${localStorage.getItem('token')}`
-//     },
-//     body: JSON.stringify({postId: formData.get('postId')})
-//   });
-//   console.log(response);
-//   return null;
-// }
 
 export default function Home({saved}){
 

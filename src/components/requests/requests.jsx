@@ -3,7 +3,7 @@ import {Form, redirect, useLoaderData, Link} from 'react-router-dom';
 import { useState } from 'react';
 
 export async function requestsLoader(){
-  const response = await fetch('http://localhost:3000/protected/requests',{
+  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/requests',{
     method: 'get',
     headers:{
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -24,7 +24,7 @@ export async function deleteRequest({request}){
   const formData = await request.formData();
   
   if(formData.get('actionType') == 'delete'){
-    const response = await fetch(`http://localhost:3000/protected/requests/${formData.get('requestId')}`,{
+    const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/requests/${formData.get('requestId')}`,{
       method: 'delete',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -32,7 +32,7 @@ export async function deleteRequest({request}){
     });
   }else{
     const answer = formData.get('actionType');
-    const response = await fetch(`http://localhost:3000/protected/requests/${formData.get('requestId')}`,{
+    const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/requests/${formData.get('requestId')}`,{
       method: 'post',
       headers: {
         'Content-Type': 'application/JSON',
@@ -42,11 +42,7 @@ export async function deleteRequest({request}){
     });
     console.log(response);
   }
-  
-  // if(response.status >= 400){
-  //   const data = await response.json();
-  //   // alert(data.msg)
-  // }
+ 
   return null;
 }
 

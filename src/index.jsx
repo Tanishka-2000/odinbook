@@ -109,23 +109,10 @@ const router = createBrowserRouter([
     element: <Signup />,
     action: signupAction
   },
-  // {
-  //   path: '/logout',
-  //   action: () => {
-  //     localStorage.removeItem('token');
-  //     localStorage.removeItem('avatar');
-  //     return redirect('/login');
-  //   }
-  // }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
   <RouterProvider router={router}/>
-    {/* <> */}
-    {/* <Navbar />
-    <Home /> */}
-    {/* <Login /> */}
-    {/* </> */}
   </React.StrictMode>,
 )

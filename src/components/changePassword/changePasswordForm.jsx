@@ -6,7 +6,7 @@ export async function changePasswordAction({request}){
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
-  const response = fetch('http://localhost:3000/protected/change-password',{
+  const response = fetch('https://odinbook-api-1dl4.onrender.com/protected/change-password',{
     method: 'put',
     headers: {
       'Content-Type': 'application/JSON',

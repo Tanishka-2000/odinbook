@@ -7,7 +7,7 @@ export async function postFormAction({request}){
   const data = Object.fromEntries(formData);
   // console.log(data);
 
-  let response = await fetch('http://localhost:3000/protected/posts',{
+  let response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/posts',{
     method: 'post',
     headers: {
       'Content-Type': 'application/JSON',

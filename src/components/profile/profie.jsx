@@ -1,11 +1,9 @@
 import './styles.css';
-// import userImage from '../../images/user.jpg';
-// import cat2 from '../../images/cat2.jpg';
 import Post from '../post/post';
 import { useLoaderData } from 'react-router-dom';
 
 export async function profileLoader(){
-  const response = await fetch('http://localhost:3000/protected/about',{
+  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/about',{
     method: 'get',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -18,7 +16,7 @@ export async function profileLoader(){
 }
 
 export async function friendProfileLoader({params}){
-  const response = await fetch(`http://localhost:3000/protected/users/${params.userId}`,{
+  const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/users/${params.userId}`,{
     method: 'get',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -40,15 +38,10 @@ export default function Profile({isCurrentUser}){
       
         <div className='profile-image'>
           <img src={data.image} />
-          {/* {isCurrentUser ? 
-            <button className='change-photo'><span className='material-symbols-outlined camera'>photo_camera</span></button>
-            : ''
-          } */}
         </div>
 
         <div className='name'>
           <h1>{data.name}</h1>
-          {/* <p>In a cat's eye all things belong to cats.</p> */}
         </div>
 
           {

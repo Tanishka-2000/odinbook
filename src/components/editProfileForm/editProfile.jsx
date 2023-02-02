@@ -2,7 +2,7 @@ import { Form, redirect, useLoaderData } from 'react-router-dom';
 import './styles.css';
 
 export async function loadProfileData(){
-  const response = await fetch('http://localhost:3000/protected/profile', {
+  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/profile', {
     method: 'get',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -18,7 +18,7 @@ export async function profileAction({request}){
   const data = Object.fromEntries(formData);
   delete data['field'];
   console.log(data);
-  const response = await fetch(`http://localhost:3000/protected/profile/${formData.get('field')}`,{
+  const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/profile/${formData.get('field')}`,{
     method: 'put',
     headers: {
       'Content-Type': 'application/JSON',
@@ -34,7 +34,7 @@ export async function deleteProfile({request}){
   const data = Object.fromEntries(formData);
   delete data['field'];
   // console.log(data);
-  const response = await fetch(`http://localhost:3000/protected/profile/${formData.get('field')}`,{
+  const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/profile/${formData.get('field')}`,{
     method: 'delete',
     headers: {
       'Content-Type': 'application/JSON',
