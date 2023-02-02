@@ -76,6 +76,7 @@
 .profile .see-friends-btn{
   width: 100%;
   padding: 10px;
+  text-decoration: none;
   margin: 10px 0;
   color: var(--color);
   background-color: var(--primary-background-color);
@@ -110,6 +111,16 @@
   font-weight: 700;
   margin-right: 10px;
   color: var(--color);
+}
+
+.posts h2{
+  width: 100%;
+  text-align: center;
+  margin: 20px 0 0px;
+  background-color: var(--secondary-background-color);
+  color: var(--color);
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .posts{

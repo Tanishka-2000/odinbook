@@ -1,6 +1,6 @@
 import './styles.css';
 import Post from '../post/post';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, Link } from 'react-router-dom';
 
 export async function profileLoader(){
   const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/about',{
@@ -101,14 +101,15 @@ export default function Profile({isCurrentUser}){
             }
           </div>
         </div>
-      <button className='see-friends-btn'>
+      {/* <Link to='/' className='see-friends-btn'>
         <span className='material-symbols-outlined'>group</span>
         See Friends
-      </button>
+      </Link> */}
        </div>
 
       
       <div className='posts'>
+      <h2>Posts</h2>
         {data.posts.map(post => <Post key={post._id} post={post}/>)}
       </div>
    {/* </div>    */}
