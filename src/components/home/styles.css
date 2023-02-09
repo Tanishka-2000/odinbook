@@ -45,3 +45,74 @@
   color: var(--color);
   text-decoration: none;
 }
+
+.skeleton-post{
+  width: 600px;
+  margin: 20px;
+}
+
+@media (width < 620px) {
+  .skeleton-post{
+    width: 95%;
+  }
+}
+
+.skeleton-header{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.skeleton-user-image{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: var(--secondary-background-color);
+}
+
+.skeleton-user-data{
+  height: auto;
+  width: 100%;
+  /* background-color: pink; */
+}
+
+.skeleton-user-name,
+.skeleton-post-date{
+  width: 60%;
+  height: 20px;
+  border-radius: 5px;
+  margin: 5px 0;
+  background-color: var(--secondary-background-color);
+}
+
+/* .skeleton-post-date{
+  width: 30%;
+} */
+
+.skeleton-post-title{
+  height: 40px;
+  border-radius: 20px;
+  background-color: var(--secondary-background-color);
+  margin: 10px 0;
+}
+
+.skeleton-post-image{
+  aspect-ratio: 1/1;
+  background-color: var(--secondary-background-color);
+  margin: 10px 0;
+}
+
+.skeleton-btn-group{
+  height: 40px;
+  display: flex;
+  gap: 5px;
+  margin: 10px 0;
+}
+
+.skeleton-btn-group > div{
+  flex-grow: 1;
+  border-radius: 5px;
+  background-color: var(--secondary-background-color);
+}

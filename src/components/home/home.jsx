@@ -1,4 +1,5 @@
-import { redirect, useLoaderData, Link } from 'react-router-dom';
+import { Suspense } from 'react';
+import { redirect, useLoaderData, Link, Await, defer } from 'react-router-dom';
 // import image1 from '../../images/image1.jpg';
 // import image2 from '../../images/image2.jpg';
 // import image3 from '../../images/image3.jpg';
@@ -8,9 +9,8 @@ import './styles.css';
 // import Users from '../users/users';
 // import EditProfile from '../editProfileForm/editProfile';
 
-export async function homeLoader(){
-  
-  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/',{
+async function getPosts(url){
+  const response = await fetch(url,{
     method: 'get',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -18,8 +18,23 @@ export async function homeLoader(){
   });
   if(response.status >= 400) return redirect('/login');
   const data = await response.json();
-  // console.log(data);
+  console.log(data);
   return data;
+}
+
+export async function homeLoader(){
+  
+  // const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/',{
+  //   method: 'get',
+  //   headers: {
+  //     Authorization: `Bearer ${localStorage.getItem('token')}`
+  //   }
+  // });
+  // if(response.status >= 400) return redirect('/login');
+  // const data = await response.json();
+  // console.log(data);
+  let data = getPosts('https://odinbook-api-1dl4.onrender.com/protected/');
+  return defer({posts: data});
 }
 
 export async function savedPostsLoader(){
@@ -33,7 +48,7 @@ export async function savedPostsLoader(){
   if(response.status >= 400) return redirect('/login');
   const data = await response.json();
   // console.log(data);
-  return data;
+  return {posts: data};
 }
 
 export async function postLoader({params}){
@@ -47,12 +62,12 @@ export async function postLoader({params}){
   if(response.status >= 400) return redirect('/login');
   const data = await response.json();
   // console.log(data);
-  return [data];
+  return {posts: [data]};
 }
 
 export default function Home({saved}){
 
-  const posts = useLoaderData();
+  const {posts} = useLoaderData();
   return(
     <div className='home'>
       {
@@ -67,7 +82,41 @@ export default function Home({saved}){
           </div>
         </div>
       }
-      {posts.map(post => <Post key={post._id} post={post} saved={saved}/>)}
+      
+      <Suspense fallback={<SkeletonPosts />}>
+        <Await resolve={posts}>
+          {(resolvedPosts) => 
+            <>
+            {resolvedPosts.map(post => <Post key={post._id} post={post} saved={saved}/>)}
+            </>
+          } 
+        </Await>  
+      </Suspense>
     </div>
+  )
+}
+// resolvedPosts.map(post => <Post key={post._id} post={post} saved={saved}/>)
+export function SkeletonPosts(){
+  return(
+    <div className='skeleton-post'>
+      <div className='skeleton-header'>
+
+        <div className='skeleton-user-image'></div>
+
+        <div className='skeleton-user-data'>
+          <div className='skeleton-user-name'></div>
+          <div className='skeleton-post-date'></div>
+        </div>
+        
+      </div>  
+    
+      <div className='skeleton-post-title'></div>
+      <div className='skeleton-post-image'></div>
+
+      <div className='skeleton-btn-group'>
+        <div></div>
+        <div></div>
+      </div>    
+  </div>  
   )
 }

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 
 import { 
   createBrowserRouter,
-  redirect,
   RouterProvider,
 } from 'react-router-dom';
 
@@ -18,7 +17,7 @@ import EditProfile, { deleteProfile, loadProfileData , profileAction} from './co
 import Requests, {requestsLoader, deleteRequest} from './components/requests/requests';
 import ChangePasswordForm, {changePasswordAction} from './components/changePassword/changePasswordForm';
 import ErrorPage from './components/errorPage/errorPage';
-import './index.css';
+import './index.css'; 
 
 const router = createBrowserRouter([
   {
