@@ -49,6 +49,9 @@
 .skeleton-post{
   width: 600px;
   margin: 20px;
+  background-color: var(--secondary-background-color);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 @media (width < 620px) {
@@ -62,20 +65,29 @@
   justify-content: start;
   align-items: center;
   margin: 10px 0;
+  gap: 10px;
 }
 
+.skeleton-user-image,
+.skeleton-user-name,
+.skeleton-post-date,
+.skeleton-post-image,
+.skeleton-post-title,
+.skeleton-btn-group > div{
+  background-color: var(--primary-background-color);
+}
+
+
 .skeleton-user-image{
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin-right: 10px;
-  background-color: var(--secondary-background-color);
 }
 
 .skeleton-user-data{
   height: auto;
-  width: 100%;
-  /* background-color: pink; */
+  width: 90%;
 }
 
 .skeleton-user-name,
@@ -84,23 +96,16 @@
   height: 20px;
   border-radius: 5px;
   margin: 5px 0;
-  background-color: var(--secondary-background-color);
 }
-
-/* .skeleton-post-date{
-  width: 30%;
-} */
 
 .skeleton-post-title{
   height: 40px;
   border-radius: 20px;
-  background-color: var(--secondary-background-color);
   margin: 10px 0;
 }
 
 .skeleton-post-image{
   aspect-ratio: 1/1;
-  background-color: var(--secondary-background-color);
   margin: 10px 0;
 }
 
@@ -114,5 +119,4 @@
 .skeleton-btn-group > div{
   flex-grow: 1;
   border-radius: 5px;
-  background-color: var(--secondary-background-color);
 }

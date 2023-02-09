@@ -1,13 +1,7 @@
 import { Suspense } from 'react';
 import { redirect, useLoaderData, Link, Await, defer } from 'react-router-dom';
-// import image1 from '../../images/image1.jpg';
-// import image2 from '../../images/image2.jpg';
-// import image3 from '../../images/image3.jpg';
 import Post from '../post/post.jsx';
 import './styles.css';
-// import Profile from '../profile/profie';
-// import Users from '../users/users';
-// import EditProfile from '../editProfileForm/editProfile';
 
 async function getPosts(url){
   const response = await fetch(url,{
@@ -18,50 +12,21 @@ async function getPosts(url){
   });
   if(response.status >= 400) return redirect('/login');
   const data = await response.json();
-  console.log(data);
   return data;
 }
 
 export async function homeLoader(){
-  
-  // const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/',{
-  //   method: 'get',
-  //   headers: {
-  //     Authorization: `Bearer ${localStorage.getItem('token')}`
-  //   }
-  // });
-  // if(response.status >= 400) return redirect('/login');
-  // const data = await response.json();
-  // console.log(data);
   let data = getPosts('https://odinbook-api-1dl4.onrender.com/protected/');
   return defer({posts: data});
 }
 
 export async function savedPostsLoader(){
-  
-  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/saved-posts',{
-    method: 'get',
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-    }
-  });
-  if(response.status >= 400) return redirect('/login');
-  const data = await response.json();
-  // console.log(data);
+  let data = getPosts('https://odinbook-api-1dl4.onrender.com/protected/saved-posts')
   return {posts: data};
 }
 
 export async function postLoader({params}){
-  
-  const response = await fetch(`https://odinbook-api-1dl4.onrender.com/protected/posts/${params.postId}`,{
-    method: 'get',
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-    }
-  });
-  if(response.status >= 400) return redirect('/login');
-  const data = await response.json();
-  // console.log(data);
+  let data = getPosts(`https://odinbook-api-1dl4.onrender.com/protected/posts/${params.postId}`)
   return {posts: [data]};
 }
 
@@ -95,7 +60,8 @@ export default function Home({saved}){
     </div>
   )
 }
-// resolvedPosts.map(post => <Post key={post._id} post={post} saved={saved}/>)
+
+// skeleton UI for post
 export function SkeletonPosts(){
   return(
     <div className='skeleton-post'>

@@ -1,9 +1,10 @@
 import './styles.css';
-import { useLoaderData, Form, redirect, Link } from 'react-router-dom';
+import { useLoaderData, Form, redirect, Link, defer, Await } from 'react-router-dom';
+import { Suspense } from 'react';
 
-// loader function for user's friends
-export async function friendsLoader(){
-  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/friends',{
+// function to load users
+async function getUsers(url){
+  const response = await fetch(url,{
     method: 'get',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -13,16 +14,31 @@ export async function friendsLoader(){
   return data;
 }
 
+
+// loader function for user's friends
+export async function friendsLoader(){
+  // const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/friends',{
+  //   method: 'get',
+  //   headers: {
+  //     Authorization: `Bearer ${localStorage.getItem('token')}`
+  //   }
+  // });
+  // const data = await response.json();
+  let data = getUsers('https://odinbook-api-1dl4.onrender.com/protected/friends');
+  return defer({users: data});
+}
+
 // loader function for users not friend of users
 export async function usersLoader(){
-  const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/users',{
-    method: 'get',
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-    }
-  });
-  const data = await response.json();
-  return data;
+  // const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/users',{
+  //   method: 'get',
+  //   headers: {
+  //     Authorization: `Bearer ${localStorage.getItem('token')}`
+  //   }
+  // });
+  // const data = await response.json();
+  let data = getUsers('https://odinbook-api-1dl4.onrender.com/protected/users');
+  return defer({users: data});
 }
 
 // action function for unfriend a user
@@ -52,11 +68,19 @@ export async function sendFriendRequest({request}){
 // react component
 export default function Users({friendList}){
   
-  const users = useLoaderData();
+  const {users} = useLoaderData();
   return(
     <div className='users'>
       <h1 className='users-list-heading'>{friendList ? 'Friends List' : 'Users List'}</h1>
-      {users.map(user => <User key={user._id} friendList={friendList} user={user}/>)}
+      <Suspense fallback={<SkeletonUsers />}>
+        <Await resolve={users}>
+          {(resolvedUsers) =>
+            <>
+           {resolvedUsers.map(user => <User key={user._id} friendList={friendList} user={user}/>)}
+           </>
+          }
+        </Await> 
+      </Suspense>
     </div>
   )
 }
@@ -77,6 +101,38 @@ function User({friendList, user}){
           {friendList ? 'unfriend' : 'add friend'}
         </button>
       </Form>
+    </div>
+  )
+}
+
+export function SkeletonUsers(){
+  return(
+    <div className='skeleton-users'>
+
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+
     </div>
   )
 }

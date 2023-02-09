@@ -6,7 +6,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import Main , {loader, loader as mainLoader} from './components/main/main';
+import Main , {loader as mainLoader} from './components/main/main';
 import Login, {action as loginAction, loginGuestUser} from './components/login/login';
 import Signup, {action as signupAction} from './components/login/signup';
 import Home, {homeLoader, savedPostsLoader, postLoader} from './components/home/home';
@@ -18,6 +18,8 @@ import Requests, {requestsLoader, deleteRequest} from './components/requests/req
 import ChangePasswordForm, {changePasswordAction} from './components/changePassword/changePasswordForm';
 import ErrorPage from './components/errorPage/errorPage';
 import './index.css'; 
+// import { SkeletonUsers } from './components/users/users';
+// import { SkeletonPosts } from './components/home/home';
 
 const router = createBrowserRouter([
   {
@@ -113,5 +115,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
   <RouterProvider router={router}/>
+  {/* <SkeletonPosts /> */}
   </React.StrictMode>,
 )
