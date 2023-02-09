@@ -1,5 +1,6 @@
 .requests{
   width: 600px;
+  color: var(--color);
 }
 
 @media (width < 620px){
