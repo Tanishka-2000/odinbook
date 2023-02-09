@@ -1,7 +1,9 @@
-import { Form, redirect, useLoaderData } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Await, defer, Form, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import './styles.css';
 
-export async function loadProfileData(){
+
+async function getprofile(){
   const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/profile', {
     method: 'get',
     headers: {
@@ -11,6 +13,11 @@ export async function loadProfileData(){
   
   const data = await response.json();
   return data;
+}
+
+export async function loadProfileData(){
+  let profile = getprofile();
+  return defer({profile});
 }
 
 export async function profileAction({request}){
@@ -47,13 +54,17 @@ export async function deleteProfile({request}){
 
 export default function EditProfile(){
 
-  const profile = useLoaderData();
-  // console.log(profile);
+  const {profile} = useLoaderData();
+  const navigate = useNavigate();
+  
   return(
+    <Suspense fallback={<SkeletonEditProfile />}>
+    <Await resolve={profile}>
+    {(resolvedProfile) => 
     <div className='edit-profile'>
 
       <div className='header'> 
-        <button aria-label='close button'><span className="material-symbols-outlined back">arrow_back</span></button>
+        <button aria-label='close button' onClick={() => navigate(-1)}><span className="material-symbols-outlined back">arrow_back</span></button>
         <h2>About</h2>
       </div>
 
@@ -77,7 +88,7 @@ export default function EditProfile(){
             <input type='text' name='experience' placeholder='Add Work Experience' aria-label='Add Work Experience'/>
           </Form>
         </div>
-        {profile.workExperience.map((experience, i) => 
+        {resolvedProfile.workExperience.map((experience, i) => 
           <li key={i}>
             <span className="material-symbols-outlined">business_center</span>
             {experience}
@@ -112,7 +123,7 @@ export default function EditProfile(){
           </Form>
         </div>
  
-      {profile.highSchool.map((school, i) => 
+      {resolvedProfile.highSchool.map((school, i) => 
         <li key={i}>
           <span className="material-symbols-outlined">school</span>
           went to {school}
@@ -127,7 +138,7 @@ export default function EditProfile(){
         </li>
       )}
       
-      {profile.college.map((school, i) => 
+      {resolvedProfile.college.map((school, i) => 
         <li key={i}>
           <span className="material-symbols-outlined">school</span>
           studied at {school}
@@ -154,7 +165,7 @@ export default function EditProfile(){
               name='city'
               placeholder='Add Current Town/City'
               aria-label='Add Current Town/City'
-              defaultValue={profile.currentCity}  
+              defaultValue={resolvedProfile.currentCity}  
             />
           </Form>
         </div>
@@ -167,7 +178,7 @@ export default function EditProfile(){
               name='town'
               placeholder='Add Home Town'
               aria-label='Add Home Town'
-              defaultValue={profile.homeTown}
+              defaultValue={resolvedProfile.homeTown}
             />
           </Form>
         </div>
@@ -191,7 +202,7 @@ export default function EditProfile(){
           </Form>
         </div>
 
-        {profile.contactInfo.email.map((em, i) => 
+        {resolvedProfile.contactInfo.email.map((em, i) => 
           <li key={i}>
             <span className="material-symbols-outlined">mail</span>
             {em}
@@ -206,7 +217,7 @@ export default function EditProfile(){
           </li>
         )}
 
-        {profile.contactInfo.phone.map((ph, i) => 
+        {resolvedProfile.contactInfo.phone.map((ph, i) => 
           <li key={i}>
             <span className="material-symbols-outlined">call</span>
             {ph}
@@ -226,14 +237,14 @@ export default function EditProfile(){
      <div className='basic-info'>
         <h3>Basic info</h3>
         <div>
-          <span className="material-symbols-outlined">{profile.gender == 'male' ? 'man' : 'woman'}</span> {/*woman*/}
+          <span className="material-symbols-outlined">{resolvedProfile.gender == 'male' ? 'man' : 'woman'}</span> {/*woman*/}
           <Form method='post'>
             <input type='hidden' name='field' value='gender' />
             <input type='text'
               name='gender'
               placeholder='Add Gender'
               aria-label='Add Gender'
-              defaultValue={profile.gender}
+              defaultValue={resolvedProfile.gender}
             />
           </Form>
         </div>
@@ -246,11 +257,96 @@ export default function EditProfile(){
               name='date'
               placeholder='Add Date of Birth'
               aria-label='Add Date of Birth'
-              defaultValue={new Date(profile.birthDate).toDateString().slice(4)}
+              defaultValue={new Date(resolvedProfile.birthDate).toDateString().slice(4)}
               />
           </Form>
         </div>
       </div>  
+    </div>
+    }
+    </Await>
+  </Suspense>
+  )
+}
+
+function SkeletonEditProfile(){
+  return(
+    <div className='edit-profile'>
+
+      <div className='header'> 
+        <button aria-label='close button' onClick={() => navigate(-1)}><span className="material-symbols-outlined back">arrow_back</span></button>
+        <h2>About</h2>
+      </div>
+
+      <div className='avatar'>
+        <h3>Profile picture </h3>
+        <div>
+          <span className="material-symbols-outlined">person</span>
+          <div className='skeleton-edit'></div>
+        </div>  
+      </div>
+
+      <div className='work'>
+        <h3>work</h3>
+        <div>
+          <span className="material-symbols-outlined">business_center</span>
+          <div className='skeleton-edit'></div>
+        </div>      
+      </div>
+
+
+    <div className='education'>
+      <h3>Education</h3>
+        <div>
+          <span className="material-symbols-outlined">school</span>
+          <div className='skeleton-edit'></div>
+        </div>
+
+        <div>
+          <span className="material-symbols-outlined">apartment</span>
+          <div className='skeleton-edit'></div>
+        </div>
+      </div>
+
+      <div className='places-lived'>
+        <h3>Places Lived</h3>
+        <div>
+          <span className="material-symbols-outlined">home_work</span>
+          <div className='skeleton-edit'></div>          
+        </div>
+
+        <div>
+          <span className="material-symbols-outlined">location_on</span>
+          <div className='skeleton-edit'></div>
+        </div>
+      </div>
+
+     <div className='contact-info'>
+        <h3>Contact info</h3>
+        <div>
+          <span className="material-symbols-outlined">call</span>
+          <div className='skeleton-edit'></div>
+        </div>
+
+        <div>
+          <span className="material-symbols-outlined">mail</span>
+          <div className='skeleton-edit'></div>
+        </div>
+      </div>  
+
+      <div className='basic-info'>
+        <h3>Basic info</h3>
+        <div>
+          <span className="material-symbols-outlined">man</span> {/*woman*/}
+          <div className='skeleton-edit'></div>
+        </div>
+
+        <div>
+          <span className="material-symbols-outlined">cake</span>
+          <div className='skeleton-edit'></div>
+        </div>
+      </div> 
+
     </div>
   )
 }

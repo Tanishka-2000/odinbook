@@ -3,7 +3,9 @@ import { redirect, useLoaderData, Link, Await, defer } from 'react-router-dom';
 import Post from '../post/post.jsx';
 import './styles.css';
 
-async function getPosts(url){
+// function accepts parameter 'singlePost -> true/false' because, Home component render array of post,
+// and defer function can not return [posts]
+async function getPosts(url, singlePost){
   const response = await fetch(url,{
     method: 'get',
     headers: {
@@ -12,24 +14,28 @@ async function getPosts(url){
   });
   if(response.status >= 400) return redirect('/login');
   const data = await response.json();
-  return data;
+  return (singlePost ? [data] : data);
 }
 
+// loads all user's and his/her friends' posts
 export async function homeLoader(){
-  let data = getPosts('https://odinbook-api-1dl4.onrender.com/protected/');
-  return defer({posts: data});
+  let posts = getPosts('https://odinbook-api-1dl4.onrender.com/protected/', false);
+  return defer({posts});
 }
 
+// loads user's saved posts
 export async function savedPostsLoader(){
-  let data = getPosts('https://odinbook-api-1dl4.onrender.com/protected/saved-posts')
-  return {posts: data};
+  let posts = getPosts('https://odinbook-api-1dl4.onrender.com/protected/saved-posts', false)
+  return defer({posts});
 }
 
+// load single post
 export async function postLoader({params}){
-  let data = getPosts(`https://odinbook-api-1dl4.onrender.com/protected/posts/${params.postId}`)
-  return {posts: [data]};
+  let posts = getPosts(`https://odinbook-api-1dl4.onrender.com/protected/posts/${params.postId}`, true)
+  return defer({posts});
 }
 
+// accepts 'saved -> true/false, as it does not render link to /write route if its /saved-posts route
 export default function Home({saved}){
 
   const {posts} = useLoaderData();

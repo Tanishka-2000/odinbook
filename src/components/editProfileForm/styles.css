@@ -104,3 +104,13 @@
 .edit-profile > div > *:last-child:is(:not(li)) input{
   border-bottom: none;
 }
+
+/* skeleton UI */
+
+.skeleton-edit{
+  height: 30px;
+  flex-grow: 1;
+  border-radius: 5px;
+  background-color: var(--primary-background-color);
+  margin: 8px 0;
+}
