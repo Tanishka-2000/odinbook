@@ -136,3 +136,37 @@
   font-size: 1.3rem;
   font-weight: 700; 
 }
+
+/* skeleton UI */
+
+.skeleton-user{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: auto;
+  background-color: var(--secondary-background-color);
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.skeleton-user .skeleton-account,
+.skeleton-user .skeleton-name,
+.skeleton-user .skeleton-btn{
+  background-color: var(--primary-background-color);
+  border-radius: 5px;
+}
+
+.skeleton-user .skeleton-account{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.skeleton-user .skeleton-name{
+  flex-grow: 1;
+  height: 35px;
+}
+.skeleton-user .skeleton-btn{
+  width: 100px;
+  height: 35px;
+}

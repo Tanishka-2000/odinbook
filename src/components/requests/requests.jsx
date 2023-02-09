@@ -1,8 +1,9 @@
 import './styles.css';
-import {Form, redirect, useLoaderData, Link} from 'react-router-dom';
-import { useState } from 'react';
+import {Form, redirect, useLoaderData, Link, Await, defer} from 'react-router-dom';
+import { Suspense, useState } from 'react';
 
-export async function requestsLoader(){
+
+async function getRequests(){
   const response = await fetch('https://odinbook-api-1dl4.onrender.com/protected/requests',{
     method: 'get',
     headers:{
@@ -11,13 +12,18 @@ export async function requestsLoader(){
   });
   if(response.status >= 400) return redirect('/login');
   const data = await response.json();
-  // console.log(data);
+  
   let sent = [], recieved = [];
   data.forEach(request => {
     if(request.domain == 'sent') sent = [...sent, request];
     else recieved = [...recieved, request];
   });
   return {sent, recieved};
+}
+
+export async function requestsLoader(){
+  let data = getRequests();
+  return defer({data});
 }
 
 export async function deleteRequest({request}){
@@ -48,8 +54,7 @@ export async function deleteRequest({request}){
 
 export default function Requests(){
   const [sentRequests, setSentRequests] = useState(true);
-  const {sent, recieved} = useLoaderData();
-  // console.log({sent, recieved});
+  const {data} = useLoaderData();
   
   return(
     <div className='requests'>
@@ -60,12 +65,29 @@ export default function Requests(){
       {sentRequests ? 
         <div>
           <h1 className='header'>Sent Requests</h1>
-          {sent.map(request => <SentRequest key={request._id} request={request}/>)}
+          <Suspense fallback={<SkeletonSentRequests />}>
+            <Await resolve={data}>
+              {(resolvedRequest) => 
+                <>
+                  {resolvedRequest.sent.map(request => <SentRequest key={request._id} request={request}/>)}
+                </>
+              }
+            </Await>
+          </Suspense>
         </div>
         :
         <div>
           <h1 className='header'>Recieved Requests</h1>
-          {recieved.map(request => <RecivedRequest key={request._id} request={request} />)}
+          <Suspense fallback={<SkeletonSentRequests />}>
+            <Await resolve={data}>
+              {(resolvedRequest) => 
+                <>
+                {resolvedRequest.recieved.map(request => <RecivedRequest key={request._id} request={request} />)}
+                </>
+              }
+            </Await>
+          </Suspense>
+          
         </div>
       }  
     </div>
@@ -141,5 +163,71 @@ function RecivedRequest({request}){
         </Form>
       </div>
     </div>
+  )
+}
+
+// Fallback UI for sent requests
+export function SkeletonSentRequests(){
+  return(
+    <>
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+    </>
+  )
+}
+
+// Fallback UI for recived requests
+export function SkeletonReceivedRequests(){
+  return(
+    <>
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+
+      <div className='skeleton-user'>
+        <div className='skeleton-account'></div>
+        <div className='skeleton-name'></div>
+        <div className='skeleton-btn'></div>
+        <div className='skeleton-btn'></div>
+      </div>
+    </>
   )
 }
