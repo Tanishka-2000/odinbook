@@ -20,10 +20,7 @@
 .profile .profile-image{
   width: 100%;
   aspect-ratio: 1/1;
-  /* border-radius: 50%; */
   overflow: hidden;
-  /* border: 5px solid var(--secondary-background-color); */
-  /* position: relative; */
 
 }
 
@@ -34,32 +31,7 @@
   object-fit: cover;
   object-position: center;
 }
-/* 
-.profile .change-photo{
-  background-color: var(--secondary-background-color);
-  border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  position: absolute;
-  bottom: 20px;
-  right: 65px;
-}
 
-.profile .change-photo .camera{
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 2rem;
-  display: grid;
-  place-content: center;
-  background-color: var(--primary-background-color);
-  color: var(--color);
-}
-
-.profile .change-photo .camera:hover{
-  background-color: var(--third-background-color);
-} */
 
 .profile .name{
   color: var(--color);
@@ -127,4 +99,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* Skeleton UI */
+
+.skeleton-profile{
+  width: 600px;
+  margin-top: 10px;
+  padding: 20px;
+  background-color: var(--secondary-background-color);
+}
+
+@media (width < 620px) {
+  .skeleton-profile{
+    width: 100%;
+    margin: 10px;
+  }
+}
+
+.skeleton-photo,
+.skeleton-profile-data > div{
+  background-color: var(--primary-background-color);
+}
+
+.skeleton-photo{
+  margin: 10px;
+  width: 90%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.skeleton-profile-data{
+  width: 100%;
+  height: auto;
+}
+
+.skeleton-profile-data > div{
+  width: 90%;
+  height: 40px;
+  margin: 20px 0;
+  border-radius: 5px;
 }

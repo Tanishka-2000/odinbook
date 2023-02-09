@@ -20,6 +20,7 @@ import ErrorPage from './components/errorPage/errorPage';
 import './index.css'; 
 // import { SkeletonUsers } from './components/users/users';
 // import { SkeletonPosts } from './components/home/home';
+import { SkeletonProfile } from './components/profile/profie';
 
 const router = createBrowserRouter([
   {
@@ -116,5 +117,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
   <RouterProvider router={router}/>
   {/* <SkeletonPosts /> */}
+  {/* <SkeletonProfile /> */}
   </React.StrictMode>,
 )

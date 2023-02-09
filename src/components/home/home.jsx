@@ -64,6 +64,7 @@ export default function Home({saved}){
 // skeleton UI for post
 export function SkeletonPosts(){
   return(
+    <>
     <div className='skeleton-post'>
       <div className='skeleton-header'>
 
@@ -83,6 +84,49 @@ export function SkeletonPosts(){
         <div></div>
         <div></div>
       </div>    
-  </div>  
+    </div>
+
+    <div className='skeleton-post'>
+      <div className='skeleton-header'>
+
+        <div className='skeleton-user-image'></div>
+
+        <div className='skeleton-user-data'>
+          <div className='skeleton-user-name'></div>
+          <div className='skeleton-post-date'></div>
+        </div>
+        
+      </div>  
+    
+      <div className='skeleton-post-title'></div>
+      <div className='skeleton-post-image'></div>
+
+      <div className='skeleton-btn-group'>
+        <div></div>
+        <div></div>
+      </div>    
+    </div>
+
+    <div className='skeleton-post'>
+      <div className='skeleton-header'>
+
+        <div className='skeleton-user-image'></div>
+
+        <div className='skeleton-user-data'>
+          <div className='skeleton-user-name'></div>
+          <div className='skeleton-post-date'></div>
+        </div>
+        
+      </div>  
+    
+      <div className='skeleton-post-title'></div>
+      <div className='skeleton-post-image'></div>
+
+      <div className='skeleton-btn-group'>
+        <div></div>
+        <div></div>
+      </div>    
+    </div>  
+  </>
   )
 }
